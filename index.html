@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CASCARA COLORADA FIAMBRERÍA</title>
+    <title>MINIMARKET CASCARA COLORADA</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome icons -->
@@ -107,157 +107,148 @@
         }
     </style>
 
-    <!-- Global Default Data -->
+    <!-- Global Default Data & High-Performance Offline Database Setup -->
     <script>
         window.FALLBACK_IMAGE = "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=800&auto=format&fit=crop";
+        window.BRAND_LOGO = "WhatsApp Image 2026-10-27 at 15.37.26.jpeg";
 
         window.DEFAULT_PRODUCTS = [
             {
-                id: "v1",
-                name: "Tomate Redondo Seleccionado (1 kg)",
+                id: "prod-1",
+                title: "Tomate Perita Seleccionado (1 kg)",
                 category: "verduleria",
-                price: 2400,
-                desc: "Tomates rojos y firmes de primera calidad, ideales para ensaladas o salsas caseras.",
-                image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?q=80&w=800&auto=format&fit=crop",
-                badge: "Oferta",
-                extras: [{ name: "Empaque para regalo/picada", price: 200 }]
+                price: 1800,
+                desc: "Fresco, carnoso y seleccionado del día.",
+                badge: "Más Vendido",
+                image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?q=80&w=600&auto=format&fit=crop",
+                extras: ["1 kg", "2 kg", "Medio kg"]
             },
             {
-                id: "v2",
-                name: "Palta Hass Especial (1 kg)",
+                id: "prod-2",
+                title: "Palta Hass Premium (x unidad)",
                 category: "verduleria",
-                price: 5200,
-                desc: "Paltas cremosas en su punto justo de maduración para guacamole o tostadas.",
-                image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?q=80&w=800&auto=format&fit=crop",
+                price: 1200,
+                desc: "Punto justo de maduración, textura cremosa.",
                 badge: "Destacado",
-                extras: [{ name: "Selección listas para hoy", price: 0 }]
+                image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?q=80&w=600&auto=format&fit=crop",
+                extras: ["Individual", "Pack x3"]
             },
             {
-                id: "f1",
-                name: "Tabla de Picada 'Cáscara Colorada' (Para 3-4)",
+                id: "prod-3",
+                title: "Tabla de Picada Especial Cáscara Colorada",
                 category: "fiambreria",
-                price: 11500,
-                desc: "Jamón crudo, lomito horneado, queso gouda, salame de colonia, aceitunas verdes y negras.",
-                image: "https://images.unsplash.com/photo-1541529086526-db283c563270?q=80&w=800&auto=format&fit=crop",
-                badge: "Súper Recomendado",
-                extras: [{ name: "Porción extra de Queso Mar del Plata", price: 1800 }]
+                price: 8500,
+                desc: "Queso tybo, salame de colonia, jamón cocido, aceitunas y bondiola.",
+                badge: "Especialidad",
+                image: "https://images.unsplash.com/photo-1541529086526-db283c563270?q=80&w=600&auto=format&fit=crop",
+                extras: ["Para 2 personas", "Para 4 personas"]
             },
             {
-                id: "p1",
-                name: "Pan Francés / Casero del Día (1 kg)",
+                id: "prod-4",
+                title: "Queso Sardo Estacionado (250g)",
+                category: "fiambreria",
+                price: 3200,
+                desc: "Sabor intenso, ideal para rallar o picadas.",
+                badge: "Oferta",
+                image: "https://images.unsplash.com/photo-1452195100486-9cc805987862?q=80&w=600&auto=format&fit=crop",
+                extras: ["Trozado", "Rallado"]
+            },
+            {
+                id: "prod-5",
+                title: "Pan Campo Artesanal Masa Madre",
                 category: "panaderia",
-                price: 1900,
-                desc: "Crujiente por fuera y esponjoso por dentro, recién horneado por la mañana.",
-                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop",
-                badge: "Fresco",
-                extras: []
+                price: 1600,
+                desc: "Corteza crocante, miga suave. Horneado diariamente.",
+                badge: "Fresco Hoy",
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop",
+                extras: ["Entero", "Rebanado"]
             },
             {
-                id: "a1",
-                name: "Aceite de Oliva Extra Virgen (500ml)",
+                id: "prod-6",
+                title: "Aceite de Oliva Extra Virgen (500ml)",
                 category: "almacen",
-                price: 6900,
-                desc: "Prensado en frío, sabor suave y equilibrado para aderezar tus comidas.",
-                image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=800&auto=format&fit=crop",
-                extras: []
+                price: 4900,
+                desc: "Primera prensada en frío. Sabor suave y aromático.",
+                badge: "Premium",
+                image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=600&auto=format&fit=crop",
+                extras: ["500 ml", "1 Litro"]
             },
             {
-                id: "b1",
-                name: "Vino Tinto Malbec Reserva (750ml)",
+                id: "prod-7",
+                title: "Vino Tinto Malbec Reserva (750ml)",
                 category: "bebidas",
-                price: 5800,
-                desc: "Vino regional equilibrado con notas a frutos rojos y paso por madera.",
-                image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=800&auto=format&fit=crop",
-                badge: "Bodega Local",
-                extras: []
+                price: 5400,
+                desc: "Cuerpo medio, notas a frutos rojos y madera.",
+                badge: "Recomendado",
+                image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=600&auto=format&fit=crop",
+                extras: ["Individual", "Caja x6"]
             }
         ];
-    </script>
 
-    <!-- Firebase SDK (v11.6.1) -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        // Load Products safely into memory without unauthenticated external calls
+        (function initLocalStore() {
+            try {
+                const stored = localStorage.getItem('cascara_products_v3');
+                if (stored) {
+                    window.allProducts = JSON.parse(stored);
+                } else {
+                    window.allProducts = [...window.DEFAULT_PRODUCTS];
+                    localStorage.setItem('cascara_products_v3', JSON.stringify(window.allProducts));
+                }
+            } catch (e) {
+                window.allProducts = [...window.DEFAULT_PRODUCTS];
+            }
+        })();
 
-        // Configuración de Firebase
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'cascara-colorada-store';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-            apiKey: "demo-api-key",
-            authDomain: "demo-app.firebaseapp.com",
-            projectId: "demo-app",
-            storageBucket: "demo-app.appspot.com",
-            messagingSenderId: "123456789",
-            appId: "1:123456789:web:demo"
+        // BroadcastChannel to sync edits in real-time across tabs/windows
+        if ('BroadcastChannel' in window) {
+            window.storeChannel = new BroadcastChannel('cascara_store_sync');
+            window.storeChannel.onmessage = (event) => {
+                if (event.data && event.data.type === 'PRODUCTS_UPDATED') {
+                    window.allProducts = event.data.products;
+                    if (typeof window.renderProducts === 'function') {
+                        window.renderProducts();
+                    }
+                }
+            };
+        }
+
+        window.dbSaveProduct = function(product) {
+            try {
+                localStorage.setItem('cascara_products_v3', JSON.stringify(window.allProducts));
+                if (window.storeChannel) {
+                    window.storeChannel.postMessage({ type: 'PRODUCTS_UPDATED', products: window.allProducts });
+                }
+            } catch(e) {}
         };
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        window.db = db;
-        window.appId = appId;
-        window.firestoreDoc = doc;
-        window.firestoreSetDoc = setDoc;
-        window.firestoreDeleteDoc = deleteDoc;
-
-        // Autenticación inicial y suscripción a la base de datos en tiempo real
-        async function initCloudDatabase() {
+        window.dbDeleteProduct = function(productId) {
             try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
+                localStorage.setItem('cascara_products_v3', JSON.stringify(window.allProducts));
+                if (window.storeChannel) {
+                    window.storeChannel.postMessage({ type: 'PRODUCTS_UPDATED', products: window.allProducts });
                 }
-            } catch (err) {
-                console.warn("Error autenticando en Firebase, usando modo offline/local:", err);
-            }
-
-            // Suscripción en tiempo real a la colección pública de productos
-            const productsCollection = collection(db, 'artifacts', appId, 'public', 'data', 'products');
-            
-            onSnapshot(productsCollection, (snapshot) => {
-                if (!snapshot.empty) {
-                    const cloudProducts = [];
-                    snapshot.forEach((docSnap) => {
-                        cloudProducts.push({ id: docSnap.id, ...docSnap.data() });
-                    });
-                    window.PRODUCTS = cloudProducts;
-                } else {
-                    // Si la base de datos está vacía, subimos los productos por defecto
-                    seedDefaultProducts();
-                }
-                if (typeof renderProducts === 'function') renderProducts();
-                if (typeof renderAdminCatalogList === 'function') renderAdminCatalogList();
-            }, (error) => {
-                console.error("Error al escuchar cambios en Firestore:", error);
-            });
-        }
-
-        async function seedDefaultProducts() {
-            if (!auth.currentUser) return;
-            const defaults = window.DEFAULT_PRODUCTS || [];
-            for (const p of defaults) {
-                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'products', p.id);
-                await setDoc(docRef, p);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', initCloudDatabase);
+            } catch(e) {}
+        };
     </script>
 </head>
-<body class="min-h-screen flex flex-col justify-between relative selection:bg-cascara-500 selection:text-white pb-20 sm:pb-0">
+<body class="min-h-screen flex flex-col relative selection:bg-cascara-500 selection:text-white">
 
-    <!-- Fondo de estrellas -->
-    <div id="starsContainer" class="stars-background"></div>
+    <!-- Canvas para Fondo Animado de Estrellas/Glow -->
+    <div class="stars-background">
+        <canvas id="bgCanvas" class="w-full h-full opacity-40"></canvas>
+    </div>
 
     <!-- NAVBAR MOBILE-FIRST -->
     <header class="sticky top-0 z-40 glass-card border-b border-store-border/50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-2">
             <!-- Logo & Brand -->
             <div class="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer min-w-0" onclick="filterCategory('todas')">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-cascara-700 via-cascara-500 to-amber-500 flex items-center justify-center shadow-lg shadow-cascara-500/30 flex-shrink-0">
-                    <i class="fa-solid fa-basket-shopping text-base sm:text-xl text-white"></i>
+                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-black/80 border border-cascara-500/40 p-1 flex items-center justify-center shadow-lg shadow-cascara-500/20 flex-shrink-0 overflow-hidden">
+                    <img src="WhatsApp Image 2026-10-27 at 15.37.26.jpeg" 
+                         onerror="this.onerror=null; this.src=window.FALLBACK_IMAGE;"
+                         alt="Cáscara Colorada Logo" 
+                         class="w-full h-full object-contain">
                 </div>
                 <div class="min-w-0">
                     <span class="font-outfit font-black text-base sm:text-xl lg:text-2xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-cascara-100 to-cascara-500 block leading-tight truncate">MINIMARKET CASCARA COLORADA</span>
@@ -266,31 +257,32 @@
             </div>
 
             <!-- Acciones Top Header -->
-            <div class="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
-                <!-- Buscador Desktop -->
-                <div class="relative hidden md:block w-60 lg:w-72">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Buscar producto o marca..." class="w-full bg-store-card/80 border border-store-borderLight rounded-full py-2 pl-9 pr-4 text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:border-cascara-500 transition">
+            <div class="flex items-center space-x-1.5 sm:space-x-3 flex-shrink-0">
+                <!-- Buscador Desktop/Tablet -->
+                <div class="hidden md:flex items-center relative w-48 lg:w-64">
+                    <input type="text" id="searchInput" placeholder="Buscar producto..." 
+                           oninput="handleSearch(this.value)"
+                           class="w-full bg-black/50 border border-store-borderLight rounded-xl py-1.5 pl-9 pr-3 text-xs text-white placeholder-gray-400 focus:outline-none focus:border-cascara-500 transition">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 text-gray-400 text-xs"></i>
                 </div>
 
-                <!-- Botón Panel Admin -->
-                <button onclick="openAdminModal()" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-store-card border border-store-border hover:border-amber-500 text-amber-400 hover:text-amber-300 transition flex items-center justify-center active:scale-95" title="Panel Admin">
-                    <i class="fa-solid fa-gear text-sm sm:text-base"></i>
-                </button>
-
-                <!-- Botón Carrito Desktop -->
-                <button onclick="toggleCartModal()" class="hidden sm:flex relative p-3 rounded-full bg-store-card border border-store-border hover:border-cascara-500 text-white transition items-center justify-center active:scale-95">
-                    <i class="fa-solid fa-cart-shopping text-base"></i>
-                    <span id="cartCountDesktop" class="absolute -top-1 -right-1 bg-cascara-500 text-white font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
+                <!-- Carrito Top Header -->
+                <button onclick="toggleCartModal()" 
+                        class="relative px-3 py-2 rounded-xl bg-gradient-to-r from-cascara-600 to-cascara-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-cascara-500/20 active:scale-95 transition flex items-center gap-2">
+                    <i class="fa-solid fa-basket-shopping text-sm"></i>
+                    <span class="hidden sm:inline">Mi Pedido</span>
+                    <span id="cartBadge" class="bg-black text-amber-400 px-1.5 py-0.5 rounded-full text-[11px] font-black min-w-[20px] text-center">0</span>
                 </button>
             </div>
         </div>
 
-        <!-- Buscador Mobile First -->
-        <div class="px-3 pb-3 md:hidden">
+        <!-- Buscador Mobile Buscador Integrado debajo -->
+        <div class="px-3 pb-2.5 pt-0 md:hidden">
             <div class="relative w-full">
-                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-                <input type="text" id="searchInputMobile" oninput="handleSearchMobile()" placeholder="Buscar verduras, fiambres, bebidas..." class="w-full bg-store-card/90 border border-store-borderLight rounded-xl py-2.5 pl-10 pr-4 text-xs sm:text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:border-cascara-500">
+                <input type="text" id="searchInputMobile" placeholder="Buscar verduras, quesos, pan..." 
+                       oninput="handleSearchMobile(this.value)"
+                       class="w-full bg-black/60 border border-store-borderLight rounded-xl py-2 pl-9 pr-3 text-xs text-white placeholder-gray-400 focus:outline-none focus:border-cascara-500 transition">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-xs"></i>
             </div>
         </div>
     </header>
@@ -317,1130 +309,640 @@
                     </button>
                 </div>
             </div>
-            <div class="w-full md:w-auto relative z-10 flex justify-center hidden sm:flex">
-                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=800&auto=format&fit=crop" 
-                     onerror="this.src='https://images.unsplash.com/photo-1610348725531-843dff563e2c?q=80&w=800&auto=format&fit=crop'"
-                     alt="Minimarket Cáscara Colorada" 
-                     class="w-full max-w-[280px] md:w-72 lg:w-80 h-auto rounded-2xl object-cover shadow-2xl shadow-cascara-500/20 border border-cascara-500/30">
+            <div class="w-full md:w-auto relative z-10 flex justify-center">
+                <div class="p-3 bg-black/80 rounded-2xl border border-cascara-500/40 shadow-2xl shadow-cascara-500/20 backdrop-blur-md">
+                    <img src="WhatsApp Image 2026-10-27 at 15.37.26.jpeg" 
+                         onerror="this.onerror=null; this.src=window.FALLBACK_IMAGE;"
+                         alt="Cáscara Colorada Fiambrería" 
+                         class="w-full max-w-[240px] sm:max-w-[280px] md:w-72 lg:w-80 h-auto rounded-xl object-contain">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- MENÚ PRINCIPAL Y FILTROS -->
-    <main id="menu" class="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 flex-grow w-full">
-        
-        <!-- Tabs de Categorías Touch Scroll -->
-        <div class="relative mb-6">
-            <div class="flex items-center space-x-2 overflow-x-auto pb-2 no-scrollbar scroll-smooth" id="categoriesTabs">
-                <!-- Renderizado dinámico de tabs -->
+    <main id="menu" class="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mb-20 flex-grow w-full">
+        <!-- Categorías Desplazables (Touch) -->
+        <div class="mb-6">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="font-outfit text-lg sm:text-2xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-cascara-500"></i> Categorías
+                </h2>
+                <span id="productCount" class="text-xs text-gray-400 font-medium">0 productos</span>
+            </div>
+            
+            <div id="categoryTabs" class="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar touch-pan-x">
+                <!-- Se llenan dinámicamente -->
             </div>
         </div>
 
-        <!-- Encabezado de Categoría -->
-        <div class="flex items-center justify-between mb-4 sm:mb-6">
-            <h2 id="categoryTitle" class="font-outfit text-lg sm:text-2xl font-bold text-white flex items-center">
-                <span class="w-1.5 sm:w-2 h-5 sm:h-6 bg-cascara-500 rounded-full mr-2.5 inline-block"></span>
-                Todos los Productos
-            </h2>
-            <span id="productCounter" class="text-[10px] sm:text-xs text-gray-400 bg-store-card px-2.5 py-1 rounded-full border border-store-borderLight">0 Productos</span>
+        <!-- Grid de Productos -->
+        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
+            <!-- Renderizado dinámico -->
         </div>
 
-        <!-- Grid Mobile First (1 Col en celular, 2 en Tablet, 3-4 en Desktop) -->
-        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-6">
-            <!-- Renderizado dinámico de tarjetas -->
-        </div>
-
-        <!-- Mensaje sin resultados -->
-        <div id="noResults" class="hidden text-center py-12 sm:py-16 glass-card rounded-2xl my-6">
-            <i class="fa-solid fa-magnifying-glass-location text-4xl sm:text-5xl text-gray-600 mb-3 animate-bounce"></i>
-            <h3 class="text-lg font-bold text-white mb-1">No encontramos ese producto</h3>
-            <p class="text-gray-400 text-xs sm:text-sm px-4">Prueba buscar con otros términos o explora las categorías del Minimarket.</p>
+        <!-- Estado vacío -->
+        <div id="emptyState" class="hidden text-center py-16 glass-card rounded-2xl my-6">
+            <i class="fa-solid fa-basket-shopping text-5xl text-gray-600 mb-3 block"></i>
+            <h3 class="text-lg font-bold text-gray-300">No encontramos productos en esta categoría</h3>
+            <p class="text-xs text-gray-500 mt-1">Prueba seleccionando otra categoría o limpiando la búsqueda.</p>
+            <button onclick="filterCategory('todas')" class="mt-4 px-4 py-2 bg-cascara-600 text-white font-bold text-xs rounded-xl hover:bg-cascara-500 transition">
+                Ver todo el catálogo
+            </button>
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="relative z-10 glass-card border-t border-store-border/40 mt-8 sm:mt-12 py-6 sm:py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-            <div>
-                <span class="font-outfit font-bold text-base sm:text-lg text-white">MINIMARKET CÁSCARA COLORADA</span>
-                <p class="text-[10px] sm:text-xs text-gray-400 mt-0.5">© 2026 Cáscara Colorada - Tu almacén y verdulería de confianza.</p>
-            </div>
-            <div class="flex space-x-4 text-gray-400 text-lg">
-                <a href="#" class="hover:text-cascara-500 transition"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-cascara-500 transition"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="hover:text-cascara-500 transition"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- BARRA FLOTANTE DE COMPRA RÁPIDA (SOLO MOBILE) -->
-    <div id="mobileCartBar" class="fixed bottom-0 left-0 right-0 z-30 sm:hidden bg-store-card/95 border-t border-cascara-500/40 p-3 backdrop-blur-md flex items-center justify-between shadow-2xl transition-transform duration-300 translate-y-full">
+    <!-- BARRA FLOTANTE DEL CARRITO PARA MOBILE -->
+    <div id="mobileCartBar" class="fixed bottom-0 left-0 right-0 z-30 p-3 bg-stone-900/95 border-t border-cascara-500/30 backdrop-blur-lg flex items-center justify-between sm:hidden transition-transform duration-300 translate-y-full">
         <div class="flex items-center space-x-3">
             <div class="relative">
-                <i class="fa-solid fa-basket-shopping text-cascara-500 text-xl"></i>
-                <span id="mobileCartBarCount" class="absolute -top-2 -right-2 bg-cascara-500 text-white font-bold text-[9px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                <div class="w-10 h-10 rounded-full bg-cascara-600 text-white flex items-center justify-center font-bold">
+                    <i class="fa-solid fa-cart-shopping text-sm"></i>
+                </div>
+                <span id="mobileCartCount" class="absolute -top-1 -right-1 bg-amber-400 text-black font-black text-[10px] w-5 h-5 rounded-full flex items-center justify-center">0</span>
             </div>
             <div>
-                <span class="text-[10px] text-gray-400 block leading-tight">Total estimado</span>
-                <span id="mobileCartBarTotal" class="font-outfit font-bold text-sm text-white">$0</span>
+                <span class="text-[10px] text-gray-400 block uppercase font-bold">Subtotal Estimado</span>
+                <span id="mobileCartTotal" class="text-base font-black text-amber-400 leading-none">$0</span>
             </div>
         </div>
-        <button onclick="toggleCartModal()" class="px-4 py-2 bg-gradient-to-r from-cascara-600 to-cascara-500 text-white font-bold text-xs rounded-xl shadow-lg active:scale-95 transition">
-            Ver Carrito <i class="fa-solid fa-arrow-right ml-1"></i>
+        <button onclick="toggleCartModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cascara-600 to-cascara-500 text-white font-bold text-xs shadow-lg shadow-cascara-500/30 active:scale-95 transition">
+            Ver Pedido <i class="fa-solid fa-arrow-right ml-1"></i>
         </button>
     </div>
 
-    <!-- MODAL PERSONALIZAR PRODUCTO (DRAWERS FULL MOBILE) -->
-    <div id="customizeModal" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
-        <div class="glass-modal rounded-t-2xl sm:rounded-2xl w-full max-w-lg max-h-[92vh] sm:max-h-[90vh] overflow-y-auto flex flex-col justify-between shadow-2xl relative animate-scaleUp">
-            
-            <!-- Modal Header -->
-            <div class="relative h-40 sm:h-56 overflow-hidden rounded-t-2xl flex-shrink-0">
-                <img id="modalProductImg" src="" alt="Producto" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-store-card via-store-card/40 to-transparent"></div>
-                <button onclick="closeCustomizeModal()" class="absolute top-3 right-3 bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-cascara-500 transition">
-                    <i class="fa-solid fa-xmark text-sm"></i>
-                </button>
-                <div class="absolute bottom-3 left-3 right-3">
-                    <span id="modalProductCategory" class="text-[10px] uppercase tracking-wider font-semibold text-cascara-500">Categoría</span>
-                    <h3 id="modalProductName" class="font-outfit text-lg sm:text-2xl font-bold text-white leading-tight">Nombre Producto</h3>
-                </div>
-            </div>
-
-            <!-- Modal Content -->
-            <div class="p-4 sm:p-6 space-y-4 sm:space-y-6 flex-grow">
-                <p id="modalProductDesc" class="text-xs sm:text-sm text-gray-300 leading-relaxed"></p>
-
-                <!-- Agregados Extras / Opciones -->
-                <div>
-                    <h4 class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-400 mb-2.5 flex items-center">
-                        <i class="fa-solid fa-circle-plus text-cascara-500 mr-1.5"></i> Opciones / Adicionales
-                    </h4>
-                    <div id="modalExtrasContainer" class="space-y-2">
-                        <!-- Checkboxes inyectados dinámicamente -->
-                    </div>
-                </div>
-
-                <!-- Aclaraciones -->
-                <div>
-                    <h4 class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 flex items-center">
-                        <i class="fa-solid fa-pen-to-square text-cascara-500 mr-1.5"></i> Indicaciones del pedido
-                    </h4>
-                    <input type="text" id="modalNotes" placeholder="Ej: Fetas finas, tomates maduros, sin pan blanco..." class="w-full bg-store-card border border-store-borderLight rounded-xl p-3 text-xs sm:text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cascara-500">
-                </div>
-
-                <!-- Cantidad -->
-                <div class="flex items-center justify-between bg-store-card/60 p-3 rounded-xl border border-store-borderLight">
-                    <span class="text-xs sm:text-sm font-semibold text-gray-300">Cantidad / Unidades:</span>
-                    <div class="flex items-center space-x-3">
-                        <button onclick="updateModalQty(-1)" class="w-8 h-8 rounded-lg bg-store-card border border-store-border text-white flex items-center justify-center hover:bg-cascara-500 transition font-bold active:scale-95">-</button>
-                        <span id="modalQty" class="font-outfit font-bold text-white text-base sm:text-lg w-6 text-center">1</span>
-                        <button onclick="updateModalQty(1)" class="w-8 h-8 rounded-lg bg-store-card border border-store-border text-white flex items-center justify-center hover:bg-cascara-500 transition font-bold active:scale-95">+</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="p-4 sm:p-6 border-t border-store-borderLight bg-store-card/90 flex items-center justify-between gap-3 flex-shrink-0">
-                <div>
-                    <span class="text-[10px] text-gray-400 block">Total Ítem:</span>
-                    <span id="modalTotalPrice" class="font-outfit font-bold text-lg sm:text-xl text-cascara-500">$0</span>
-                </div>
-                <button onclick="confirmAddToCart()" class="px-5 py-3 bg-gradient-to-r from-cascara-600 to-cascara-500 hover:from-cascara-500 hover:to-cascara-600 text-white font-bold text-xs sm:text-sm rounded-xl flex items-center shadow-lg shadow-cascara-500/25 active:scale-95 transition">
-                    <i class="fa-solid fa-cart-plus mr-1.5"></i> Añadir al Carrito
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- MODAL CARRITO / CHECKOUT -->
-    <div id="cartModal" class="fixed inset-0 z-50 flex justify-end bg-black/80 backdrop-blur-sm hidden transition-all duration-300">
-        <div class="glass-modal w-full max-w-md h-full flex flex-col justify-between shadow-2xl relative border-l border-cascara-500/30 transform translate-x-full transition-transform duration-300" id="cartContent">
-            
-            <!-- Cart Header -->
-            <div class="p-4 sm:p-6 border-b border-store-borderLight flex items-center justify-between">
-                <div class="flex items-center space-x-2.5">
-                    <i class="fa-solid fa-basket-shopping text-cascara-500 text-lg sm:text-xl"></i>
-                    <h3 class="font-outfit font-bold text-lg sm:text-xl text-white">Tu Carrito de Compras</h3>
+    <div id="cartModal" class="fixed inset-0 z-50 hidden flex items-end sm:items-center justify-center bg-black/80 backdrop-blur-sm p-0 sm:p-4 transition-opacity">
+        <div class="glass-modal w-full max-w-lg rounded-t-2xl sm:rounded-2xl max-h-[92vh] sm:max-h-[88vh] flex flex-col overflow-hidden border-cascara-500/30 shadow-2xl animate-in slide-in-from-bottom duration-300">
+            <!-- Modal Header -->
+            <div class="p-4 border-b border-store-borderLight flex items-center justify-between bg-black/40">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-cart-shopping text-cascara-500 text-lg"></i>
+                    <h3 class="font-outfit text-base sm:text-lg font-bold text-white">Tu Carrito de Compra</h3>
                 </div>
-                <button onclick="toggleCartModal()" class="text-gray-400 hover:text-white p-2 text-base">
+                <button onclick="toggleCartModal()" class="w-8 h-8 rounded-full bg-stone-800 text-gray-400 hover:text-white flex items-center justify-center">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
-            <!-- Cart Body -->
-            <div class="p-4 sm:p-6 flex-grow overflow-y-auto space-y-3" id="cartItemsList">
-                <!-- Ítems del carrito dinámicos -->
+            <!-- Items List -->
+            <div id="cartItemsList" class="p-4 overflow-y-auto space-y-3 flex-grow divide-y divide-stone-800/60">
+                <!-- Se llena con Javascript -->
             </div>
 
-            <!-- Cart Footer / Summary & Checkout -->
-            <div id="cartFooter" class="p-4 sm:p-6 border-t border-store-borderLight bg-store-card/90 space-y-3 sm:space-y-4">
-                
-                <!-- Cupón -->
-                <div class="flex space-x-2">
-                    <input type="text" id="couponInput" placeholder="Código (Ej: CASCARA10)" class="flex-grow bg-store-card border border-store-borderLight rounded-xl px-3 py-2 text-xs text-white uppercase focus:outline-none focus:border-cascara-500">
-                    <button onclick="applyCoupon()" class="px-3 py-2 bg-store-card border border-cascara-500/40 text-cascara-500 font-bold text-xs rounded-xl active:scale-95 transition">Aplicar</button>
+            <!-- Modal Footer & Checkout Form -->
+            <div class="p-4 border-t border-store-borderLight bg-black/60 space-y-3">
+                <!-- Opciones de Entrega y Pago -->
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div>
+                        <label class="block text-gray-400 mb-1 font-semibold">Tipo de Entrega</label>
+                        <select id="deliveryType" class="w-full bg-stone-900 border border-store-borderLight rounded-xl p-2 text-white focus:border-cascara-500 outline-none">
+                            <option value="delivery">🛵 Delivery a domicilio</option>
+                            <option value="retiro">🏢 Retiro por local</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 mb-1 font-semibold">Método de Pago</label>
+                        <select id="paymentType" class="w-full bg-stone-900 border border-store-borderLight rounded-xl p-2 text-white focus:border-cascara-500 outline-none">
+                            <option value="efectivo">💵 Efectivo</option>
+                            <option value="transferencia">🏦 Transferencia / QR</option>
+                        </select>
+                    </div>
                 </div>
-                <div id="couponStatus" class="text-xs hidden"></div>
+
+                <div>
+                    <input type="text" id="customerAddress" placeholder="Dirección / Comentarios (Ej: Av. San Martín 123)" class="w-full bg-stone-900 border border-store-borderLight rounded-xl p-2.5 text-xs text-white placeholder-gray-500 focus:border-cascara-500 outline-none">
+                </div>
 
                 <!-- Resumen de Costos -->
-                <div class="space-y-1.5 text-xs sm:text-sm">
-                    <div class="flex justify-between text-gray-400">
-                        <span>Subtotal:</span>
-                        <span id="cartSubtotal" class="font-semibold text-white">$0</span>
-                    </div>
-                    <div id="discountRow" class="flex justify-between text-green-400 hidden">
-                        <span>Descuento:</span>
-                        <span id="cartDiscount" class="font-semibold">-$0</span>
-                    </div>
-                    <div class="flex justify-between text-gray-400">
-                        <span>Envío a Domicilio:</span>
-                        <span id="cartShipping" class="font-semibold text-white">$800</span>
-                    </div>
-                    <div class="flex justify-between text-base sm:text-lg font-bold text-white pt-2 border-t border-store-borderLight">
-                        <span>Total:</span>
-                        <span id="cartTotal" class="text-cascara-500 font-outfit">$0</span>
-                    </div>
+                <div class="flex items-center justify-between pt-1">
+                    <span class="text-xs text-gray-400 font-medium">Total Estimado:</span>
+                    <span id="cartTotalPrice" class="text-xl font-black text-amber-400">$0</span>
                 </div>
 
-                <!-- Botones Acción Carrito -->
-                <div class="grid grid-cols-2 gap-2.5 pt-1">
-                    <button onclick="clearCart()" class="py-2.5 sm:py-3 px-3 bg-store-card border border-red-500/30 text-red-400 font-semibold text-xs rounded-xl transition flex items-center justify-center">
-                        <i class="fa-solid fa-trash-can mr-1.5"></i> Vaciar
-                    </button>
-                    <button onclick="openCheckoutModal()" class="py-2.5 sm:py-3 px-3 bg-gradient-to-r from-cascara-600 to-cascara-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-cascara-500/25 active:scale-95 transition flex items-center justify-center">
-                        Checkout <i class="fa-solid fa-arrow-right ml-1.5"></i>
-                    </button>
-                </div>
+                <!-- Botón Enviar WhatsApp -->
+                <button onclick="submitOrderToWhatsApp()" class="w-full py-3.5 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-sm shadow-lg shadow-green-600/30 active:scale-95 transition flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Confirmar y Enviar Pedido por WhatsApp</span>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL CHECKOUT PASO A PASO -->
-    <div id="checkoutModal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md hidden overflow-y-auto">
-        <div class="glass-modal rounded-2xl w-full max-w-xl p-4 sm:p-8 shadow-2xl relative my-auto">
-            <button onclick="closeCheckoutModal()" class="absolute top-3 right-3 text-gray-400 hover:text-white p-2">
-                <i class="fa-solid fa-xmark text-base"></i>
-            </button>
+    <!-- MODAL ADMIN CONTROL PANEL -->
+    <div id="adminModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/85 backdrop-blur-md p-3 sm:p-4">
+        <div class="glass-modal w-full max-w-2xl rounded-2xl max-h-[90vh] flex flex-col overflow-hidden border-cascara-500/40 shadow-2xl">
+            <!-- Admin Header -->
+            <div class="p-4 border-b border-store-borderLight flex items-center justify-between bg-black/60">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-sliders text-cascara-500"></i>
+                    <h3 class="font-outfit text-base sm:text-lg font-bold text-white">Panel de Configuración - Minimarket</h3>
+                </div>
+                <button onclick="closeAdminModal()" class="w-8 h-8 rounded-full bg-stone-800 text-gray-400 hover:text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
 
-            <h3 class="font-outfit font-bold text-xl sm:text-2xl text-white mb-1 flex items-center">
-                <i class="fa-solid fa-bag-shopping text-cascara-500 mr-2.5"></i> Confirmar Compra
-            </h3>
-            <p class="text-[11px] sm:text-xs text-gray-400 mb-4 sm:mb-6">Completa tus datos para enviar tu pedido directamente a nuestro WhatsApp.</p>
+            <!-- Admin Navigation Tabs -->
+            <div class="flex border-b border-store-borderLight bg-black/30">
+                <button onclick="switchAdminTab('whatsapp')" id="tabBtn-whatsapp" class="flex-1 py-2.5 text-xs font-bold text-cascara-500 border-b-2 border-cascara-500">
+                    <i class="fa-brands fa-whatsapp mr-1"></i> WhatsApp
+                </button>
+                <button onclick="switchAdminTab('newProduct')" id="tabBtn-newProduct" class="flex-1 py-2.5 text-xs font-bold text-gray-400 hover:text-white border-b-2 border-transparent">
+                    <i class="fa-solid fa-plus mr-1"></i> Nuevo Producto
+                </button>
+                <button onclick="switchAdminTab('manageProducts')" id="tabBtn-manageProducts" class="flex-1 py-2.5 text-xs font-bold text-gray-400 hover:text-white border-b-2 border-transparent">
+                    <i class="fa-solid fa-boxes-stacked mr-1"></i> Lista
+                </button>
+                <button onclick="switchAdminTab('emojis')" id="tabBtn-emojis" class="flex-1 py-2.5 text-xs font-bold text-gray-400 hover:text-white border-b-2 border-transparent">
+                    <i class="fa-solid fa-face-smile mr-1"></i> Emojis
+                </button>
+            </div>
 
-            <form id="checkoutForm" onsubmit="handleCheckoutSubmit(event)" class="space-y-4 sm:space-y-6">
-                <!-- Paso 1: Datos de Envío -->
-                <div class="space-y-3">
-                    <h4 class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-cascara-500 border-b border-store-borderLight pb-1.5">1. Información de Entrega</h4>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-[11px] sm:text-xs font-medium text-gray-300 mb-1">Nombre Completo *</label>
-                            <input type="text" id="custName" required placeholder="Ej: María Gómez" class="w-full bg-store-card border border-store-borderLight rounded-xl p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-cascara-500">
-                        </div>
-                        <div>
-                            <label class="block text-[11px] sm:text-xs font-medium text-gray-300 mb-1">Teléfono / WhatsApp *</label>
-                            <input type="tel" id="custPhone" required placeholder="Ej: 2611234567" class="w-full bg-store-card border border-store-borderLight rounded-xl p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-cascara-500">
+            <!-- Admin Body Content -->
+            <div class="p-4 sm:p-6 overflow-y-auto space-y-4 flex-grow">
+                <!-- TAB 1: Configurar WhatsApp -->
+                <div id="tabContent-whatsapp" class="space-y-4">
+                    <div class="bg-black/40 p-4 rounded-xl border border-store-borderLight">
+                        <label class="block text-xs font-bold text-gray-300 mb-1">Número de WhatsApp de Recepción de Pedidos</label>
+                        <p class="text-[11px] text-gray-400 mb-3">Incluye el código de país sin el signo "+". Ej: 5492611234567</p>
+                        <div class="flex items-center space-x-2">
+                            <input type="text" id="adminPhoneInput" class="flex-grow bg-stone-900 border border-store-borderLight rounded-xl p-2.5 text-xs text-white focus:border-cascara-500 outline-none" placeholder="549...">
+                            <button onclick="saveWhatsAppNumber()" class="px-4 py-2.5 bg-cascara-600 hover:bg-cascara-500 text-white font-bold text-xs rounded-xl transition">
+                                Guardar
+                            </button>
                         </div>
                     </div>
+                </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- TAB 2: Agregar Nuevo Producto -->
+                <div id="tabContent-newProduct" class="hidden space-y-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div class="sm:col-span-2">
+                            <label class="block text-gray-300 font-semibold mb-1">Nombre del Producto</label>
+                            <input type="text" id="newProdTitle" placeholder="Ej: Q. Cremoso 1/2 Kg" class="w-full bg-stone-900 border border-store-borderLight rounded-xl p-2.5 text-white outline-none focus:border-cascara-500">
+                        </div>
                         <div>
-                            <label class="block text-[11px] sm:text-xs font-medium text-gray-300 mb-1">Tipo de Entrega</label>
-                            <select id="deliveryType" onchange="toggleAddressField()" class="w-full bg-store-card border border-store-borderLight rounded-xl p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-cascara-500">
-                                <option value="delivery">Envío a Domicilio</option>
-                                <option value="pickup">Retiro en Local (Sin Costo)</option>
+                            <label class="block text-gray-300 font-semibold mb-1">Categoría</label>
+                            <select id="newProdCategory" class="w-full bg-stone-900 border border-store-borderLight rounded-xl p-2.5 text-white outline-none focus:border-cascara-500">
+                                <option value="verduleria">🥦 Verdulería & Frutas</option>
+                                <option value="fiambreria">🧀 Fiambrería & Quesos</option>
+                                <option value="panaderia">🥖 Panadería</option>
+                                <option value="almacen">🧺 Almacén</option>
+                                <option value="bebidas">🍾 Bebidas</option>
                             </select>
                         </div>
-                        <div id="addressContainer">
-                            <label class="block text-[11px] sm:text-xs font-medium text-gray-300 mb-1">Dirección Exacta *</label>
-                            <input type="text" id="custAddress" required placeholder="Calle, Número, Barrio" class="w-full bg-store-card border border-store-borderLight rounded-xl p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-cascara-500">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Paso 2: Método de Pago -->
-                <div class="space-y-3">
-                    <h4 class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-cascara-500 border-b border-store-borderLight pb-1.5">2. Método de Pago</h4>
-                    
-                    <div class="grid grid-cols-2 gap-2.5">
-                        <label class="flex items-center space-x-2 p-2.5 bg-store-card rounded-xl border border-store-borderLight cursor-pointer">
-                            <input type="radio" name="paymentMethod" value="Efectivo" checked onchange="togglePaymentDetails()" class="accent-cascara-500">
-                            <span class="text-[11px] sm:text-xs font-semibold text-gray-200"><i class="fa-solid fa-money-bill-wave text-green-500 mr-1"></i>Efectivo</span>
-                        </label>
-                        <label class="flex items-center space-x-2 p-2.5 bg-store-card rounded-xl border border-store-borderLight cursor-pointer">
-                            <input type="radio" name="paymentMethod" value="Transferencia MP" onchange="togglePaymentDetails()" class="accent-cascara-500">
-                            <span class="text-[11px] sm:text-xs font-semibold text-gray-200"><i class="fa-solid fa-building-columns text-blue-400 mr-1"></i>Transf. MP</span>
-                        </label>
-                        <label class="flex items-center space-x-2 p-2.5 bg-store-card rounded-xl border border-store-borderLight cursor-pointer">
-                            <input type="radio" name="paymentMethod" value="Tarjeta Débito/Crédito" onchange="togglePaymentDetails()" class="accent-cascara-500">
-                            <span class="text-[11px] sm:text-xs font-semibold text-gray-200"><i class="fa-solid fa-credit-card text-amber-400 mr-1"></i>Tarjeta</span>
-                        </label>
-                        <label class="flex items-center space-x-2 p-2.5 bg-store-card rounded-xl border border-store-borderLight cursor-pointer">
-                            <input type="radio" name="paymentMethod" value="QR Mercado Pago" onchange="togglePaymentDetails()" class="accent-cascara-500">
-                            <span class="text-[11px] sm:text-xs font-semibold text-gray-200"><i class="fa-solid fa-qrcode text-purple-400 mr-1"></i>QR MP</span>
-                        </label>
-                    </div>
-
-                    <!-- Detalle Pago Efectivo -->
-                    <div id="cashDetails" class="p-3 bg-store-card/60 rounded-xl border border-store-borderLight space-y-1.5">
-                        <label class="block text-[11px] text-gray-300">¿Con cuánto abonas? (Para llevar vuelto)</label>
-                        <div class="flex items-center space-x-2">
-                            <input type="number" id="cashAmount" placeholder="Ej: 10000" oninput="calculateChange()" class="w-full bg-store-card border border-store-borderLight rounded-xl p-2 text-xs text-white focus:outline-none focus:border-cascara-500">
-                            <span id="changeDisplay" class="text-[11px] font-semibold text-cascara-500 whitespace-nowrap">Vuelto: $0</span>
-                        </div>
-                    </div>
-
-                    <!-- Detalle Transferencia -->
-                    <div id="transferDetails" class="hidden p-3 bg-store-card/60 rounded-xl border border-store-borderLight space-y-1.5 text-[11px] text-gray-300">
-                        <p class="font-bold text-white">Datos para Transferencia:</p>
-                        <p>• Alias Mercado Pago: <span class="font-mono text-cascara-500 font-bold">CASCARA.COLORADA.MP</span></p>
-                        <button type="button" onclick="copyAlias()" class="mt-1 text-[10px] bg-store-card border border-cascara-500/40 text-cascara-500 px-2.5 py-1 rounded-lg">
-                            <i class="fa-solid fa-copy mr-1"></i> Copiar Alias
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Botón Finalizar -->
-                <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-600 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-green-500/25 active:scale-95 transition flex items-center justify-center">
-                    <i class="fa-brands fa-whatsapp text-lg mr-2"></i> Enviar Pedido por WhatsApp
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- MODAL PANEL DE CONTROL / ADMIN -->
-    <div id="adminModal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md hidden overflow-y-auto">
-        <div class="glass-modal rounded-2xl w-full max-w-3xl p-4 sm:p-8 shadow-2xl relative my-auto max-h-[90vh] flex flex-col justify-between">
-            <button onclick="closeAdminModal()" class="absolute top-3 right-3 text-gray-400 hover:text-white p-2">
-                <i class="fa-solid fa-xmark text-base"></i>
-            </button>
-
-            <div>
-                <h3 class="font-outfit font-bold text-xl sm:text-2xl text-white mb-1 flex items-center">
-                    <i class="fa-solid fa-sliders text-amber-400 mr-2.5"></i> Panel de Control
-                </h3>
-                <p class="text-[11px] sm:text-xs text-gray-400 mb-4">Configura WhatsApp, agrega productos y gestiona emojis.</p>
-
-                <!-- Tabs Admin -->
-                <div class="flex flex-wrap gap-1.5 border-b border-store-borderLight pb-3 mb-4">
-                    <button id="adminTabConfigBtn" onclick="switchAdminTab('config')" class="px-3 py-1.5 rounded-xl font-bold text-[11px] sm:text-xs bg-amber-500 text-black">
-                        <i class="fa-solid fa-phone mr-1"></i> WhatsApp
-                    </button>
-                    <button id="adminTabEmojisBtn" onclick="switchAdminTab('emojis')" class="px-3 py-1.5 rounded-xl font-bold text-[11px] sm:text-xs bg-store-card text-gray-400">
-                        <i class="fa-regular fa-face-smile text-green-400 mr-1"></i> Emojis
-                    </button>
-                    <button id="adminTabAddBtn" onclick="switchAdminTab('add')" class="px-3 py-1.5 rounded-xl font-bold text-[11px] sm:text-xs bg-store-card text-gray-400">
-                        <i class="fa-solid fa-plus-circle mr-1"></i> Agregar
-                    </button>
-                    <button id="adminTabListBtn" onclick="switchAdminTab('list')" class="px-3 py-1.5 rounded-xl font-bold text-[11px] sm:text-xs bg-store-card text-gray-400">
-                        <i class="fa-solid fa-list-check mr-1"></i> Catálogo (<span id="adminCatalogCount">0</span>)
-                    </button>
-                </div>
-
-                <!-- CONTENIDO TAB CONFIG -->
-                <div id="adminTabConfig" class="space-y-3">
-                    <div class="bg-store-card/80 p-4 rounded-xl border border-store-borderLight space-y-3">
-                        <label class="block text-xs font-bold text-white mb-1">
-                            <i class="fa-brands fa-whatsapp text-green-400 mr-1.5"></i> Número de WhatsApp Receptor
-                        </label>
-                        <input type="text" id="adminWhatsappInput" placeholder="Ej: 5492610000000" class="w-full bg-store-base border border-store-borderLight rounded-xl p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-amber-400">
-                        <button onclick="saveWhatsappConfig()" class="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs rounded-xl shadow-lg transition">
-                            Guardar Número
-                        </button>
-                    </div>
-                </div>
-
-                <!-- CONTENIDO TAB EMOJIS -->
-                <div id="adminTabEmojis" class="hidden space-y-3 overflow-y-auto max-h-[50vh] pr-1">
-                    <div class="p-3.5 bg-store-card/80 rounded-xl border border-store-borderLight space-y-3">
-                        <h4 class="text-[10px] font-bold uppercase tracking-wider text-amber-400 flex items-center justify-between">
-                            <span><i class="fa-brands fa-whatsapp text-green-400 mr-1"></i> Emojis de Venta</span>
-                            <span class="text-[9px] text-gray-400">Toca para copiar</span>
-                        </h4>
-
-                        <div class="space-y-2 text-xs">
-                            <div class="flex flex-wrap gap-1.5 text-base">
-                                <button onclick="copyEmojiToClipboard('🛒')" class="p-1.5 bg-store-base rounded-lg border border-store-borderLight">🛒</button>
-                                <button onclick="copyEmojiToClipboard('🛍️')" class="p-1.5 bg-store-base rounded-lg border border-store-borderLight">🛍️</button>
-                                <button onclick="copyEmojiToClipboard('🧺')" class="p-1.5 bg-store-base rounded-lg border border-store-borderLight">🧺</button>
-                                <button onclick="copyEmojiToClipboard('📦')" class="p-1.5 bg-store-base rounded-lg border border-store-borderLight">📦</button>
-                                <button onclick="copyEmojiToClipboard('🏷️')" class="p-1.5 bg-store-base rounded-lg border border-store-borderLight">🏷️</button>
-                                <button onclick="copyEmojiToClipboard('🔥')" class="p-1.5 bg-store-base rounded-lg border border-store-borderLight">🔥</button>
-                                <button onclick="copyEmojiToClipboard('✨')" class="p-1.5 bg-store-base rounded-lg border border-store-borderLight">✨</button>
-                                <button onclick="copyEmojiToClipboard('🍅')" class="p-1.5 bg-store-base rounded-lg border border-store-borderLight">🍅</button>
-                                <button onclick="copyEmojiToClipboard('🧀')" class="p-1.5 bg-store-base rounded-lg border border-store-borderLight">🧀</button>
-                                <button onclick="copyEmojiToClipboard('🛵')" class="p-1.5 bg-store-base rounded-lg border border-store-borderLight">🛵</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CONTENIDO TAB AGREGAR -->
-                <div id="adminTabAdd" class="hidden space-y-3 overflow-y-auto max-h-[50vh] pr-1">
-                    <form id="newProductForm" onsubmit="handleAddNewProduct(event)" class="space-y-3">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div>
-                                <label class="block text-[11px] font-semibold text-gray-300 mb-1">Nombre *</label>
-                                <input type="text" id="newProdName" required placeholder="Ej: Jamón Cocido" class="w-full bg-store-card border border-store-borderLight rounded-xl p-2 text-xs text-white focus:outline-none focus:border-amber-400">
-                            </div>
-                            <div>
-                                <label class="block text-[11px] font-semibold text-gray-300 mb-1">Categoría *</label>
-                                <select id="newProdCategory" required class="w-full bg-store-card border border-store-borderLight rounded-xl p-2 text-xs text-white focus:outline-none focus:border-amber-400">
-                                    <option value="verduleria">Verdulería & Frutas</option>
-                                    <option value="fiambreria">Fiambrería & Quesos</option>
-                                    <option value="panaderia">Panadería</option>
-                                    <option value="almacen">Almacén</option>
-                                    <option value="bebidas">Bebidas</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div>
-                                <label class="block text-[11px] font-semibold text-gray-300 mb-1">Precio ($ ARS) *</label>
-                                <input type="number" id="newProdPrice" min="0" required placeholder="Ej: 2500" class="w-full bg-store-card border border-store-borderLight rounded-xl p-2 text-xs text-white focus:outline-none focus:border-amber-400">
-                            </div>
-                            <div>
-                                <label class="block text-[11px] font-semibold text-gray-300 mb-1">Etiqueta Destacada</label>
-                                <input type="text" id="newProdBadge" placeholder="Ej: Oferta, Fresco" class="w-full bg-store-card border border-store-borderLight rounded-xl p-2 text-xs text-white focus:outline-none focus:border-amber-400">
-                            </div>
-                        </div>
-
                         <div>
-                            <label class="block text-[11px] font-semibold text-gray-300 mb-1">URL Imagen *</label>
-                            <input type="url" id="newProdImage" required placeholder="https://..." class="w-full bg-store-card border border-store-borderLight rounded-xl p-2 text-xs text-white focus:outline-none focus:border-amber-400">
+                            <label class="block text-gray-300 font-semibold mb-1">Precio ($)</label>
+                            <input type="number" id="newProdPrice" placeholder="2500" class="w-full bg-stone-900 border border-store-borderLight rounded-xl p-2.5 text-white outline-none focus:border-cascara-500">
                         </div>
-
+                        <div class="sm:col-span-2">
+                            <label class="block text-gray-300 font-semibold mb-1">Descripción Breve</label>
+                            <input type="text" id="newProdDesc" placeholder="Frescura garantizada, elaborado hoy..." class="w-full bg-stone-900 border border-store-borderLight rounded-xl p-2.5 text-white outline-none focus:border-cascara-500">
+                        </div>
                         <div>
-                            <label class="block text-[11px] font-semibold text-gray-300 mb-1">Descripción *</label>
-                            <textarea id="newProdDesc" rows="2" required placeholder="Detalles del producto..." class="w-full bg-store-card border border-store-borderLight rounded-xl p-2 text-xs text-white focus:outline-none focus:border-amber-400"></textarea>
+                            <label class="block text-gray-300 font-semibold mb-1">Etiqueta Destacada (Opcional)</label>
+                            <input type="text" id="newProdBadge" placeholder="Ej: Oferta / Fresco" class="w-full bg-stone-900 border border-store-borderLight rounded-xl p-2.5 text-white outline-none focus:border-cascara-500">
                         </div>
-
-                        <button type="submit" class="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase rounded-xl transition">
-                            <i class="fa-solid fa-plus mr-1"></i> Guardar Producto
-                        </button>
-                    </form>
+                        <div>
+                            <label class="block text-gray-300 font-semibold mb-1">URL de Imagen (Opcional)</label>
+                            <input type="text" id="newProdImage" placeholder="https://..." class="w-full bg-stone-900 border border-store-borderLight rounded-xl p-2.5 text-white outline-none focus:border-cascara-500">
+                        </div>
+                    </div>
+                    <button onclick="createNewProduct()" class="w-full py-3 bg-gradient-to-r from-cascara-600 to-cascara-500 text-white font-bold text-xs rounded-xl shadow-lg transition active:scale-95 mt-2">
+                        <i class="fa-solid fa-plus mr-1"></i> Publicar Producto
+                    </button>
                 </div>
 
-                <!-- CONTENIDO TAB LISTA -->
-                <div id="adminTabList" class="hidden space-y-2 overflow-y-auto max-h-[50vh] pr-1">
-                    <!-- Renderizado dinámico -->
+                <!-- TAB 3: Administrar Existentes -->
+                <div id="tabContent-manageProducts" class="hidden space-y-2">
+                    <div id="adminProductList" class="space-y-2 max-h-[350px] overflow-y-auto pr-1">
+                        <!-- Carga dinámica -->
+                    </div>
+                </div>
+
+                <!-- TAB 4: Emojis para WhatsApp -->
+                <div id="tabContent-emojis" class="hidden space-y-4">
+                    <p class="text-xs text-gray-400">Haz clic sobre cualquier emoji para copiarlo al portapapeles y pegarlo directamente en tus mensajes o descripciones:</p>
+                    <div class="space-y-3">
+                        <div>
+                            <span class="text-[11px] font-bold text-amber-400 block mb-1">🛒 Ventas y Pedidos</span>
+                            <div class="flex flex-wrap gap-1.5 text-lg bg-black/40 p-2.5 rounded-xl border border-store-borderLight">
+                                <button onclick="copyEmoji('🛒')" class="p-1.5 hover:bg-stone-800 rounded">🛒</button>
+                                <button onclick="copyEmoji('🛍️')" class="p-1.5 hover:bg-stone-800 rounded">🛍️</button>
+                                <button onclick="copyEmoji('📦')" class="p-1.5 hover:bg-stone-800 rounded">📦</button>
+                                <button onclick="copyEmoji('🏷️')" class="p-1.5 hover:bg-stone-800 rounded">🏷️</button>
+                                <button onclick="copyEmoji('🔥')" class="p-1.5 hover:bg-stone-800 rounded">🔥</button>
+                                <button onclick="copyEmoji('✨')" class="p-1.5 hover:bg-stone-800 rounded">✨</button>
+                                <button onclick="copyEmoji('💯')" class="p-1.5 hover:bg-stone-800 rounded">💯</button>
+                                <button onclick="copyEmoji('👇')" class="p-1.5 hover:bg-stone-800 rounded">👇</button>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold text-amber-400 block mb-1">🧺 Almacén & Verdulería</span>
+                            <div class="flex flex-wrap gap-1.5 text-lg bg-black/40 p-2.5 rounded-xl border border-store-borderLight">
+                                <button onclick="copyEmoji('🧺')" class="p-1.5 hover:bg-stone-800 rounded">🧺</button>
+                                <button onclick="copyEmoji('🍎')" class="p-1.5 hover:bg-stone-800 rounded">🍎</button>
+                                <button onclick="copyEmoji('🥦')" class="p-1.5 hover:bg-stone-800 rounded">🥦</button>
+                                <button onclick="copyEmoji('🥖')" class="p-1.5 hover:bg-stone-800 rounded">🥖</button>
+                                <button onclick="copyEmoji('🧀')" class="p-1.5 hover:bg-stone-800 rounded">🧀</button>
+                                <button onclick="copyEmoji('🍾')" class="p-1.5 hover:bg-stone-800 rounded">🍾</button>
+                                <button onclick="copyEmoji('❄️')" class="p-1.5 hover:bg-stone-800 rounded">❄️</button>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold text-amber-400 block mb-1">🛵 Envíos y Pagos</span>
+                            <div class="flex flex-wrap gap-1.5 text-lg bg-black/40 p-2.5 rounded-xl border border-store-borderLight">
+                                <button onclick="copyEmoji('🛵')" class="p-1.5 hover:bg-stone-800 rounded">🛵</button>
+                                <button onclick="copyEmoji('🚚')" class="p-1.5 hover:bg-stone-800 rounded">🚚</button>
+                                <button onclick="copyEmoji('💵')" class="p-1.5 hover:bg-stone-800 rounded">💵</button>
+                                <button onclick="copyEmoji('💳')" class="p-1.5 hover:bg-stone-800 rounded">💳</button>
+                                <button onclick="copyEmoji('🏦')" class="p-1.5 hover:bg-stone-800 rounded">🏦</button>
+                                <button onclick="copyEmoji('📍')" class="p-1.5 hover:bg-stone-800 rounded">📍</button>
+                                <button onclick="copyEmoji('✅')" class="p-1.5 hover:bg-stone-800 rounded">✅</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- TOAST NOTIFICATION MOBILE FIRST -->
-    <div id="toast" class="fixed bottom-16 sm:bottom-6 left-4 right-4 sm:left-auto sm:right-6 z-50 glass-card px-4 py-3 rounded-xl border border-cascara-500 text-white text-xs sm:text-sm font-semibold shadow-2xl flex items-center justify-between sm:justify-start space-x-3 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
-        <div class="flex items-center space-x-2">
-            <i class="fa-solid fa-circle-check text-green-400 text-base" id="toastIcon"></i>
-            <span id="toastMsg">Notificación</span>
-        </div>
+    <!-- NOTIFICACIÓN TOAST -->
+    <div id="toastNotification" class="fixed top-5 right-5 z-50 hidden bg-cascara-600 text-white font-bold text-xs px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-2 border border-white/20">
+        <i class="fa-solid fa-circle-check text-base"></i>
+        <span id="toastMsg">Operación exitosa</span>
     </div>
 
-    <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a href="https://wa.me/5492610000000?text=Hola!%20Quisiera%20hacer%20una%20consulta%20a%20Minimarket%20C%C3%A1scara%20Colorada" target="_blank" class="fixed bottom-4 left-4 z-30 bg-green-500 hover:bg-green-600 text-white w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 active:scale-95 transition">
-        <i class="fa-brands fa-whatsapp text-xl sm:text-2xl"></i>
-    </a>
+    <!-- FOOTER MOBILE FIRST -->
+    <footer class="relative z-10 bg-black border-t border-store-borderLight py-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
+            <div class="flex justify-center items-center space-x-2">
+                <div class="w-8 h-8 rounded-lg bg-black border border-cascara-500/40 p-0.5">
+                    <img src="WhatsApp Image 2026-10-27 at 15.37.26.jpeg" 
+                         onerror="this.onerror=null; this.src=window.FALLBACK_IMAGE;"
+                         alt="Logo Footer" class="w-full h-full object-contain">
+                </div>
+                <span class="font-outfit font-black text-sm text-white">MINIMARKET CASCARA COLORADA</span>
+            </div>
+            <p class="text-xs text-gray-500">Ventas por mayor y menor. Verdulería, Fiambrería, Panadería y Almacén.</p>
+            <p class="text-[11px] text-gray-600">© 2026 Minimarket Cáscara Colorada - Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
+    <!-- LOGIC SCRIPT -->
     <script>
-        /* ==========================================================================
-           LÓGICA JAVASCRIPT CON SOPORTE MOBILE-FIRST
-           ========================================================================== */
+        // Global State
+        window.cart = [];
+        window.activeCategory = 'todas';
+        window.whatsappPhone = localStorage.getItem('cascara_wa_phone') || "5492634622277";
 
-        const FALLBACK_IMAGE = window.FALLBACK_IMAGE;
-        const DEFAULT_PRODUCTS = window.DEFAULT_PRODUCTS;
-
-        let PRODUCTS = JSON.parse(localStorage.getItem('cascara_products')) || DEFAULT_PRODUCTS;
-        let WHATSAPP_NUMBER = localStorage.getItem('cascara_wa_number') || "5492610000000";
-
-        // Hacer PRODUCTS global para la sincronización con Firebase
-        window.PRODUCTS = PRODUCTS;
-
-        const CATEGORIES = [
-            { id: "todas", name: "Todas", icon: "fa-border-all" },
-            { id: "verduleria", name: "Verdulería & Frutas", icon: "fa-carrot" },
-            { id: "fiambreria", name: "Fiambrería & Quesos", icon: "fa-cheese" },
-            { id: "panaderia", name: "Panadería", icon: "fa-bread-slice" },
-            { id: "almacen", name: "Almacén", icon: "fa-box-open" },
-            { id: "bebidas", name: "Bebidas", icon: "fa-bottle-water" }
+        // Global Categories
+        window.CATEGORIES = [
+            { id: 'todas', name: 'Todo el Menú', icon: 'fa-border-all' },
+            { id: 'verduleria', name: 'Verdulería & Frutas', icon: 'fa-carrot' },
+            { id: 'fiambreria', name: 'Fiambrería & Quesos', icon: 'fa-cheese' },
+            { id: 'panaderia', name: 'Panadería', icon: 'fa-bread-slice' },
+            { id: 'almacen', name: 'Almacén', icon: 'fa-basket-shopping' },
+            { id: 'bebidas', name: 'Bebidas', icon: 'fa-wine-bottle' }
         ];
 
-        let currentCategory = "todas";
-        let searchQuery = "";
-        let cart = [];
-        let appliedDiscount = 0;
-        let selectedProductForCustomization = null;
-        let selectedQuantity = 1;
-        let selectedExtras = [];
-
-        function handleImageError(imgEl) {
-            if (imgEl.src !== FALLBACK_IMAGE) {
-                imgEl.src = FALLBACK_IMAGE;
-            }
-        }
-
+        // Initialization
         window.onload = function() {
-            createBackgroundEffects();
-            renderCategoryTabs();
-            renderProducts();
-            updateCartUI();
-        }
-
-        async function saveProductsToStorage() {
-            localStorage.setItem('cascara_products', JSON.stringify(window.PRODUCTS));
-        }
-
-        async function saveProductToCloud(product) {
-            if (window.db && window.appId) {
-                try {
-                    const docRef = window.firestoreDoc(window.db, 'artifacts', window.appId, 'public', 'data', 'products', product.id);
-                    await window.firestoreSetDoc(docRef, product);
-                } catch (e) {
-                    console.error("Error al guardar producto en la nube:", e);
-                }
+            window.createBackgroundEffects();
+            if (!window.allProducts || window.allProducts.length === 0) {
+                window.allProducts = [...window.DEFAULT_PRODUCTS];
             }
-        }
+            window.renderCategoryTabs();
+            window.renderProducts();
+            document.getElementById('adminPhoneInput').value = window.whatsappPhone;
+        };
 
-        async function deleteProductFromCloud(productId) {
-            if (window.db && window.appId) {
-                try {
-                    const docRef = window.firestoreDoc(window.db, 'artifacts', window.appId, 'public', 'data', 'products', productId);
-                    await window.firestoreDeleteDoc(docRef);
-                } catch (e) {
-                    console.error("Error al eliminar producto de la nube:", e);
-                }
-            }
-        }
+        // Fallback for image errors
+        window.handleImageError = function(img) {
+            img.onerror = null;
+            img.src = window.FALLBACK_IMAGE;
+        };
 
-        function createBackgroundEffects() {
-            const container = document.getElementById('starsContainer');
+        // Render Tabs
+        window.renderCategoryTabs = function() {
+            const container = document.getElementById('categoryTabs');
             if (!container) return;
-            container.innerHTML = '';
-            for (let i = 0; i < 20; i++) {
-                const star = document.createElement('div');
-                star.className = 'absolute rounded-full bg-cascara-500/20 animate-pulse';
-                const size = Math.random() * 3 + 2;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.top = `${Math.random() * 100}%`;
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                container.appendChild(star);
-            }
-        }
-
-        function renderCategoryTabs() {
-            const container = document.getElementById('categoriesTabs');
-            if (!container) return;
-            container.innerHTML = CATEGORIES.map(cat => `
-                <button onclick="filterCategory('${cat.id}')" id="tab-${cat.id}" 
-                    class="px-3.5 py-2 rounded-xl font-semibold text-xs whitespace-nowrap transition flex items-center space-x-1.5 active:scale-95 ${
-                        currentCategory === cat.id 
-                        ? 'bg-gradient-to-r from-cascara-600 to-cascara-500 text-white shadow-md shadow-cascara-500/20' 
-                        : 'bg-store-card border border-store-borderLight text-gray-300'
-                    }">
+            container.innerHTML = window.CATEGORIES.map(cat => `
+                <button onclick="filterCategory('${cat.id}')" 
+                        class="flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-bold transition whitespace-nowrap ${window.activeCategory === cat.id ? 'bg-cascara-600 text-white shadow-lg shadow-cascara-600/30' : 'bg-store-card border border-store-borderLight text-gray-400 hover:text-white'}">
                     <i class="fa-solid ${cat.icon}"></i>
                     <span>${cat.name}</span>
                 </button>
             `).join('');
-        }
+        };
 
-        function filterCategory(catId) {
-            currentCategory = catId;
-            renderCategoryTabs();
-            const categoryObj = CATEGORIES.find(c => c.id === catId);
-            const titleEl = document.getElementById('categoryTitle');
-            if (titleEl && categoryObj) {
-                titleEl.innerHTML = `<span class="w-1.5 sm:w-2 h-5 sm:h-6 bg-cascara-500 rounded-full mr-2.5 inline-block"></span>${categoryObj.name}`;
-            }
-            renderProducts();
-        }
-
-        function handleSearch() {
-            const input = document.getElementById('searchInput');
-            searchQuery = input ? input.value.toLowerCase().trim() : '';
-            renderProducts();
-        }
-
-        function handleSearchMobile() {
-            const input = document.getElementById('searchInputMobile');
-            searchQuery = input ? input.value.toLowerCase().trim() : '';
-            renderProducts();
-        }
-
-        function renderProducts() {
+        // Render Products
+        window.renderProducts = function(filteredItems = null) {
+            const items = filteredItems || (window.activeCategory === 'todas' ? window.allProducts : window.allProducts.filter(p => p.category === window.activeCategory));
             const grid = document.getElementById('productsGrid');
-            const noResults = document.getElementById('noResults');
-            const counter = document.getElementById('productCounter');
-            if (!grid) return;
+            const empty = document.getElementById('emptyState');
+            const countLabel = document.getElementById('productCount');
 
-            const productList = window.PRODUCTS || PRODUCTS;
+            if (countLabel) countLabel.innerText = `${items.length} productos`;
 
-            let filtered = productList.filter(p => {
-                const matchCategory = currentCategory === 'todas' || p.category === currentCategory;
-                const matchSearch = p.name.toLowerCase().includes(searchQuery) || p.desc.toLowerCase().includes(searchQuery);
-                return matchCategory && matchSearch;
-            });
-
-            if (counter) {
-                counter.innerText = `${filtered.length} Productos`;
-            }
-
-            if (filtered.length === 0) {
-                grid.innerHTML = '';
-                if (noResults) noResults.classList.remove('hidden');
+            if (items.length === 0) {
+                if (grid) grid.innerHTML = '';
+                if (empty) empty.classList.remove('hidden');
                 return;
             }
 
-            if (noResults) noResults.classList.add('hidden');
+            if (empty) empty.classList.add('hidden');
+            if (!grid) return;
 
-            grid.innerHTML = filtered.map(p => `
-                <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between group transition-all duration-300">
-                    <div class="relative h-40 sm:h-48 overflow-hidden">
-                        <img src="${p.image}" onerror="handleImageError(this)" alt="${p.name}" class="w-full h-full object-cover">
-                        ${p.badge ? `<span class="absolute top-2.5 left-2.5 bg-cascara-500 text-white font-extrabold text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider shadow-md">${p.badge}</span>` : ''}
-                        <button onclick="openCustomizeModal('${p.id}')" class="absolute bottom-2.5 right-2.5 bg-store-card/90 text-white p-2 sm:p-2.5 rounded-xl backdrop-blur-md active:scale-95 transition">
-                            <i class="fa-solid fa-eye text-xs"></i>
-                        </button>
+            grid.innerHTML = items.map(prod => `
+                <div class="glass-card rounded-2xl overflow-hidden border-store-border flex flex-col group hover:border-cascara-500/50 transition duration-300">
+                    <div class="relative h-40 sm:h-48 overflow-hidden bg-stone-900">
+                        <img src="${prod.image || window.FALLBACK_IMAGE}" 
+                             onerror="window.handleImageError(this)" 
+                             alt="${prod.title}" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        ${prod.badge ? `<span class="absolute top-2 left-2 bg-cascara-600/90 backdrop-blur-md text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider border border-white/20">${prod.badge}</span>` : ''}
                     </div>
-
-                    <div class="p-3.5 sm:p-5 flex-grow flex flex-col justify-between space-y-2 sm:space-y-3">
+                    <div class="p-3.5 sm:p-4 flex flex-col flex-grow justify-between space-y-3">
                         <div>
-                            <span class="text-[9px] sm:text-[10px] uppercase font-bold text-cascara-500 tracking-wider">${p.category}</span>
-                            <h3 class="font-outfit font-bold text-sm sm:text-base text-white line-clamp-1">${p.name}</h3>
-                            <p class="text-[11px] sm:text-xs text-gray-400 line-clamp-2 mt-0.5">${p.desc}</p>
+                            <h3 class="font-outfit font-bold text-sm sm:text-base text-white leading-snug line-clamp-1">${prod.title}</h3>
+                            <p class="text-xs text-gray-400 mt-1 line-clamp-2">${prod.desc || ''}</p>
                         </div>
-
                         <div class="flex items-center justify-between pt-2 border-t border-store-borderLight">
                             <div>
-                                <span class="text-[9px] text-gray-400 block">Precio</span>
-                                <span class="font-outfit font-black text-base sm:text-lg text-white">$${p.price.toLocaleString('es-AR')}</span>
+                                <span class="text-[10px] text-gray-500 block leading-none">Precio</span>
+                                <span class="text-base sm:text-lg font-black text-amber-400">$${prod.price.toLocaleString()}</span>
                             </div>
-                            <button onclick="openCustomizeModal('${p.id}')" class="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-cascara-600 to-cascara-500 text-white font-bold text-xs flex items-center space-x-1 shadow-md shadow-cascara-500/20 active:scale-95 transition">
-                                <i class="fa-solid fa-cart-plus"></i>
+                            <button onclick="addToCart('${prod.id}')" class="px-3 py-2 bg-cascara-600 hover:bg-cascara-500 text-white rounded-xl text-xs font-bold shadow-md shadow-cascara-600/20 active:scale-95 transition flex items-center space-x-1">
+                                <i class="fa-solid fa-plus text-xs"></i>
                                 <span>Agregar</span>
                             </button>
                         </div>
                     </div>
                 </div>
             `).join('');
-        }
+        };
 
-        /* ==========================================================================
-           PANEL DE CONTROL & MODALES
-           ========================================================================== */
+        // Filter Function
+        window.filterCategory = function(catId) {
+            window.activeCategory = catId;
+            window.renderCategoryTabs();
+            window.renderProducts();
+        };
 
-        function openAdminModal() {
-            document.getElementById('adminWhatsappInput').value = WHATSAPP_NUMBER;
-            document.getElementById('adminCatalogCount').innerText = (window.PRODUCTS || PRODUCTS).length;
-            renderAdminCatalogList();
-            document.getElementById('adminModal').classList.remove('hidden');
-        }
+        // Search Handlers
+        window.handleSearch = function(query) {
+            const q = query.toLowerCase().trim();
+            if (!q) return window.renderProducts();
+            const matches = window.allProducts.filter(p => p.title.toLowerCase().includes(q) || (p.desc && p.desc.toLowerCase().includes(q)));
+            window.renderProducts(matches);
+        };
 
-        function closeAdminModal() {
-            document.getElementById('adminModal').classList.add('hidden');
-        }
+        window.handleSearchMobile = function(query) {
+            window.handleSearch(query);
+        };
 
-        function switchAdminTab(tab) {
-            const tabs = ['Config', 'Emojis', 'Add', 'List'];
-            tabs.forEach(t => {
-                const btn = document.getElementById(`adminTab${t}Btn`);
-                const content = document.getElementById(`adminTab${t}`);
-                if (btn && content) {
-                    if (t.toLowerCase() === tab) {
-                        btn.className = "px-3 py-1.5 rounded-xl font-bold text-[11px] sm:text-xs bg-amber-500 text-black";
-                        content.classList.remove('hidden');
-                    } else {
-                        btn.className = "px-3 py-1.5 rounded-xl font-bold text-[11px] sm:text-xs bg-store-card text-gray-400";
-                        content.classList.add('hidden');
-                    }
-                }
-            });
-        }
-
-        function copyEmojiToClipboard(emoji) {
-            const tempInput = document.createElement('input');
-            tempInput.value = emoji;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            showToast(`Emoji ${emoji} copiado`);
-        }
-
-        function saveWhatsappConfig() {
-            const inputVal = document.getElementById('adminWhatsappInput').value.trim();
-            if (inputVal) {
-                WHATSAPP_NUMBER = inputVal;
-                localStorage.setItem('cascara_wa_number', WHATSAPP_NUMBER);
-                showToast("Número de WhatsApp guardado");
-            }
-        }
-
-        async function handleAddNewProduct(e) {
-            e.preventDefault();
-            const newProd = {
-                id: "prod_" + Date.now(),
-                name: document.getElementById('newProdName').value.trim(),
-                category: document.getElementById('newProdCategory').value,
-                price: parseFloat(document.getElementById('newProdPrice').value) || 0,
-                desc: document.getElementById('newProdDesc').value.trim(),
-                image: document.getElementById('newProdImage').value.trim(),
-                badge: document.getElementById('newProdBadge').value.trim() || null,
-                extras: []
-            };
-
-            window.PRODUCTS.unshift(newProd);
-            saveProductsToStorage();
-            await saveProductToCloud(newProd);
-
-            renderProducts();
-            document.getElementById('newProductForm').reset();
-            document.getElementById('adminCatalogCount').innerText = window.PRODUCTS.length;
-            renderAdminCatalogList();
-            showToast("Producto guardado y sincronizado en la nube");
-            switchAdminTab('list');
-        }
-
-        async function deleteProduct(productId) {
-            if (confirm("¿Eliminar este producto?")) {
-                window.PRODUCTS = window.PRODUCTS.filter(p => p.id !== productId);
-                saveProductsToStorage();
-                await deleteProductFromCloud(productId);
-
-                renderProducts();
-                renderAdminCatalogList();
-                document.getElementById('adminCatalogCount').innerText = window.PRODUCTS.length;
-                showToast("Producto eliminado de todos los dispositivos", "info");
-            }
-        }
-
-        function renderAdminCatalogList() {
-            const container = document.getElementById('adminTabList');
-            const productList = window.PRODUCTS || PRODUCTS;
-            container.innerHTML = productList.map(p => `
-                <div class="p-2.5 bg-store-card/80 border border-store-borderLight rounded-xl flex items-center justify-between space-x-2">
-                    <div class="flex items-center space-x-2.5">
-                        <img src="${p.image}" onerror="handleImageError(this)" class="w-10 h-10 rounded-lg object-cover">
-                        <div>
-                            <h4 class="text-xs font-bold text-white">${p.name}</h4>
-                            <span class="text-[10px] text-gray-400 capitalize">${p.category} • $${p.price.toLocaleString('es-AR')}</span>
-                        </div>
-                    </div>
-                    <button onclick="deleteProduct('${p.id}')" class="p-1.5 text-red-400 hover:text-red-300 rounded-lg">
-                        <i class="fa-solid fa-trash text-xs"></i>
-                    </button>
-                </div>
-            `).join('');
-        }
-
-        /* ==========================================================================
-           MODAL DE SELECCIÓN DE PRODUCTO
-           ========================================================================== */
-
-        function openCustomizeModal(productId) {
-            const productList = window.PRODUCTS || PRODUCTS;
-            const product = productList.find(p => p.id === productId);
-            if (!product) return;
-
-            selectedProductForCustomization = product;
-            selectedQuantity = 1;
-            selectedExtras = [];
-
-            document.getElementById('modalProductName').innerText = product.name;
-            document.getElementById('modalProductCategory').innerText = product.category;
-            document.getElementById('modalProductDesc').innerText = product.desc;
-            
-            const imgEl = document.getElementById('modalProductImg');
-            imgEl.src = product.image;
-            imgEl.onerror = () => handleImageError(imgEl);
-
-            document.getElementById('modalQty').innerText = selectedQuantity;
-            document.getElementById('modalNotes').value = "";
-
-            const extrasContainer = document.getElementById('modalExtrasContainer');
-            if (product.extras && product.extras.length > 0) {
-                extrasContainer.innerHTML = product.extras.map((ex, idx) => `
-                    <label class="flex items-center justify-between p-2.5 bg-store-card/80 rounded-xl border border-store-borderLight cursor-pointer">
-                        <div class="flex items-center space-x-2.5">
-                            <input type="checkbox" onchange="toggleExtra(${idx})" class="w-4 h-4 rounded accent-cascara-500">
-                            <span class="text-xs font-semibold text-gray-200">${ex.name}</span>
-                        </div>
-                        <span class="text-xs font-bold text-cascara-500">${ex.price > 0 ? '+$' + ex.price.toLocaleString('es-AR') : 'Gratis'}</span>
-                    </label>
-                `).join('');
+        // Cart Logic
+        window.addToCart = function(productId) {
+            const prod = window.allProducts.find(p => p.id === productId);
+            if (!prod) return;
+            const existing = window.cart.find(item => item.id === productId);
+            if (existing) {
+                existing.qty++;
             } else {
-                extrasContainer.innerHTML = `<p class="text-[11px] text-gray-500 italic">No hay adicionales requeridos.</p>`;
+                window.cart.push({ ...prod, qty: 1 });
             }
+            window.updateCartUI();
+            window.showToast(`Agregado: ${prod.title}`);
+        };
 
-            updateModalTotalPrice();
+        window.updateCartUI = function() {
+            const totalQty = window.cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = window.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
 
-            const modal = document.getElementById('customizeModal');
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-            }, 10);
-        }
+            document.getElementById('cartBadge').innerText = totalQty;
+            document.getElementById('mobileCartCount').innerText = totalQty;
+            document.getElementById('mobileCartTotal').innerText = `$${totalPrice.toLocaleString()}`;
+            document.getElementById('cartTotalPrice').innerText = `$${totalPrice.toLocaleString()}`;
 
-        function closeCustomizeModal() {
-            const modal = document.getElementById('customizeModal');
-            modal.classList.add('opacity-0');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-        }
-
-        function toggleExtra(extraIndex) {
-            const extra = selectedProductForCustomization.extras[extraIndex];
-            const exists = selectedExtras.findIndex(e => e.name === extra.name);
-            if (exists >= 0) {
-                selectedExtras.splice(exists, 1);
-            } else {
-                selectedExtras.push(extra);
-            }
-            updateModalTotalPrice();
-        }
-
-        function updateModalQty(delta) {
-            selectedQuantity = Math.max(1, selectedQuantity + delta);
-            document.getElementById('modalQty').innerText = selectedQuantity;
-            updateModalTotalPrice();
-        }
-
-        function updateModalTotalPrice() {
-            if (!selectedProductForCustomization) return;
-            const extrasTotal = selectedExtras.reduce((sum, e) => sum + e.price, 0);
-            const total = (selectedProductForCustomization.price + extrasTotal) * selectedQuantity;
-            document.getElementById('modalTotalPrice').innerText = `$${total.toLocaleString('es-AR')}`;
-        }
-
-        function confirmAddToCart() {
-            if (!selectedProductForCustomization) return;
-
-            const extrasTotal = selectedExtras.reduce((sum, e) => sum + e.price, 0);
-            const unitPrice = selectedProductForCustomization.price + extrasTotal;
-            const notes = document.getElementById('modalNotes').value.trim();
-
-            const cartItem = {
-                cartItemId: Date.now(),
-                productId: selectedProductForCustomization.id,
-                name: selectedProductForCustomization.name,
-                image: selectedProductForCustomization.image,
-                quantity: selectedQuantity,
-                unitPrice: unitPrice,
-                extras: [...selectedExtras],
-                notes: notes
-            };
-
-            cart.push(cartItem);
-            updateCartUI();
-            closeCustomizeModal();
-            showToast("¡Producto agregado al carrito!");
-        }
-
-        /* ==========================================================================
-           CARRITO DE COMPRAS & BARRA MOBILE
-           ========================================================================== */
-
-        function toggleCartModal() {
-            const modal = document.getElementById('cartModal');
-            const content = document.getElementById('cartContent');
-
-            if (modal.classList.contains('hidden')) {
-                modal.classList.remove('hidden');
-                setTimeout(() => {
-                    content.classList.remove('translate-x-full');
-                }, 10);
-            } else {
-                content.classList.add('translate-x-full');
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                }, 300);
-            }
-        }
-
-        function updateCartUI() {
-            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const desktopCount = document.getElementById('cartCountDesktop');
-            if (desktopCount) desktopCount.innerText = totalCount;
-
-            // Mobile Bottom Floating Bar
             const mobileBar = document.getElementById('mobileCartBar');
-            const mobileBarCount = document.getElementById('mobileCartBarCount');
-            const mobileBarTotal = document.getElementById('mobileCartBarTotal');
-
-            if (totalCount > 0) {
-                if (mobileBar) mobileBar.classList.remove('translate-y-full');
-                if (mobileBarCount) mobileBarCount.innerText = totalCount;
+            if (totalQty > 0) {
+                mobileBar.classList.remove('translate-y-full');
             } else {
-                if (mobileBar) mobileBar.classList.add('translate-y-full');
+                mobileBar.classList.add('translate-y-full');
             }
 
-            const listContainer = document.getElementById('cartItemsList');
-
-            if (cart.length === 0) {
-                listContainer.innerHTML = `
-                    <div class="text-center py-10">
-                        <i class="fa-solid fa-basket-shopping text-3xl text-gray-600 mb-2"></i>
-                        <p class="text-xs font-semibold text-gray-400">Tu carrito está vacío</p>
-                    </div>
-                `;
-            } else {
-                listContainer.innerHTML = cart.map((item, index) => `
-                    <div class="p-2.5 bg-store-card/80 border border-store-borderLight rounded-xl flex items-center space-x-2.5">
-                        <img src="${item.image}" onerror="handleImageError(this)" class="w-12 h-12 rounded-lg object-cover">
-                        <div class="flex-grow min-w-0">
-                            <h4 class="text-xs font-bold text-white truncate">${item.name}</h4>
-                            <span class="text-xs font-bold text-cascara-500 block">$${(item.unitPrice * item.quantity).toLocaleString('es-AR')}</span>
-                        </div>
-                        <div class="flex flex-col items-end space-y-1.5">
-                            <button onclick="removeFromCart(${index})" class="text-gray-500 hover:text-red-400 text-xs">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                            <div class="flex items-center space-x-1.5 bg-store-base px-2 py-0.5 rounded-lg border border-store-borderLight">
-                                <button onclick="changeCartItemQty(${index}, -1)" class="text-xs text-gray-300 font-bold">-</button>
-                                <span class="text-xs font-bold text-white w-3 text-center">${item.quantity}</span>
-                                <button onclick="changeCartItemQty(${index}, 1)" class="text-xs text-gray-300 font-bold">+</button>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            calculateCartTotals();
-        }
-
-        function changeCartItemQty(index, delta) {
-            cart[index].quantity += delta;
-            if (cart[index].quantity <= 0) {
-                cart.splice(index, 1);
-            }
-            updateCartUI();
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-            showToast("Producto quitado", "info");
-        }
-
-        function clearCart() {
-            if (cart.length === 0) return;
-            if (confirm("¿Deseas vaciar el carrito?")) {
-                cart = [];
-                appliedDiscount = 0;
-                document.getElementById('couponInput').value = '';
-                document.getElementById('couponStatus').classList.add('hidden');
-                updateCartUI();
-                showToast("Carrito vaciado");
-            }
-        }
-
-        function applyCoupon() {
-            const code = document.getElementById('couponInput').value.trim().toUpperCase();
-            const status = document.getElementById('couponStatus');
-
-            if (code === "CASCARA10") {
-                appliedDiscount = 10;
-                status.innerText = "¡10% OFF aplicado!";
-                status.className = "text-[11px] text-green-400 font-semibold block";
-                showToast("10% OFF Aplicado");
-            } else if (code === "VECINO20") {
-                appliedDiscount = 20;
-                status.innerText = "¡20% OFF Vecino!";
-                status.className = "text-[11px] text-green-400 font-semibold block";
-                showToast("20% OFF Aplicado");
-            } else {
-                appliedDiscount = 0;
-                status.innerText = "Cupón inválido.";
-                status.className = "text-[11px] text-red-400 font-semibold block";
-            }
-            calculateCartTotals();
-        }
-
-        function calculateCartTotals() {
-            const subtotal = cart.reduce((sum, item) => sum + (item.unitPrice * item.quantity), 0);
-            const discountAmount = (subtotal * appliedDiscount) / 100;
-            const deliveryType = document.getElementById('deliveryType')?.value || 'delivery';
-            const shippingCost = (subtotal > 0 && deliveryType === 'delivery') ? 800 : 0;
-            const total = subtotal - discountAmount + shippingCost;
-
-            document.getElementById('cartSubtotal').innerText = `$${subtotal.toLocaleString('es-AR')}`;
-            document.getElementById('cartShipping').innerText = `$${shippingCost.toLocaleString('es-AR')}`;
-            document.getElementById('cartTotal').innerText = `$${Math.max(0, total).toLocaleString('es-AR')}`;
-
-            const mobileBarTotal = document.getElementById('mobileCartBarTotal');
-            if (mobileBarTotal) mobileBarTotal.innerText = `$${Math.max(0, total).toLocaleString('es-AR')}`;
-
-            const discountRow = document.getElementById('discountRow');
-            if (appliedDiscount > 0) {
-                discountRow.classList.remove('hidden');
-                document.getElementById('cartDiscount').innerText = `-$${discountAmount.toLocaleString('es-AR')}`;
-            } else {
-                discountRow.classList.add('hidden');
-            }
-        }
-
-        /* ==========================================================================
-           CHECKOUT
-           ========================================================================== */
-
-        function openCheckoutModal() {
-            if (cart.length === 0) {
-                showToast("Añade al menos un producto", "error");
+            const cartList = document.getElementById('cartItemsList');
+            if (window.cart.length === 0) {
+                cartList.innerHTML = `<div class="text-center py-10 text-gray-500 text-xs"><i class="fa-solid fa-basket-shopping text-3xl mb-2 block"></i>El carrito está vacío</div>`;
                 return;
             }
-            toggleCartModal();
-            document.getElementById('checkoutModal').classList.remove('hidden');
-            togglePaymentDetails();
-        }
 
-        function closeCheckoutModal() {
-            document.getElementById('checkoutModal').classList.add('hidden');
-        }
+            cartList.innerHTML = window.cart.map(item => `
+                <div class="flex items-center justify-between py-2">
+                    <div class="min-w-0 flex-1 pr-2">
+                        <h4 class="text-xs font-bold text-white truncate">${item.title}</h4>
+                        <span class="text-[11px] text-amber-400 font-extrabold">$${(item.price * item.qty).toLocaleString()}</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="changeQty('${item.id}', -1)" class="w-6 h-6 rounded-lg bg-stone-800 text-gray-300 flex items-center justify-center font-bold text-xs">-</button>
+                        <span class="text-xs font-bold text-white">${item.qty}</span>
+                        <button onclick="changeQty('${item.id}', 1)" class="w-6 h-6 rounded-lg bg-stone-800 text-gray-300 flex items-center justify-center font-bold text-xs">+</button>
+                    </div>
+                </div>
+            `).join('');
+        };
 
-        function toggleAddressField() {
-            const type = document.getElementById('deliveryType').value;
-            const container = document.getElementById('addressContainer');
-            const addressInput = document.getElementById('custAddress');
-
-            if (type === 'pickup') {
-                container.classList.add('hidden');
-                addressInput.removeAttribute('required');
-            } else {
-                container.classList.remove('hidden');
-                addressInput.setAttribute('required', 'true');
+        window.changeQty = function(id, delta) {
+            const item = window.cart.find(i => i.id === id);
+            if (!item) return;
+            item.qty += delta;
+            if (item.qty <= 0) {
+                window.cart = window.cart.filter(i => i.id !== id);
             }
-            calculateCartTotals();
-        }
+            window.updateCartUI();
+        };
 
-        function togglePaymentDetails() {
-            const method = document.querySelector('input[name="paymentMethod"]:checked').value;
-            const cashDetails = document.getElementById('cashDetails');
-            const transferDetails = document.getElementById('transferDetails');
+        window.toggleCartModal = function() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('hidden');
+        };
 
-            cashDetails.classList.add('hidden');
-            transferDetails.classList.add('hidden');
-
-            if (method === 'Efectivo') {
-                cashDetails.classList.remove('hidden');
-            } else if (method === 'Transferencia MP') {
-                transferDetails.classList.remove('hidden');
+        // Submit Order WhatsApp
+        window.submitOrderToWhatsApp = function() {
+            if (window.cart.length === 0) {
+                return alert("El carrito está vacío.");
             }
-        }
 
-        function calculateChange() {
-            const subtotal = cart.reduce((sum, item) => sum + (item.unitPrice * item.quantity), 0);
-            const discountAmount = (subtotal * appliedDiscount) / 100;
-            const deliveryType = document.getElementById('deliveryType').value;
-            const shippingCost = deliveryType === 'delivery' ? 800 : 0;
-            const total = subtotal - discountAmount + shippingCost;
+            const delivery = document.getElementById('deliveryType').value;
+            const payment = document.getElementById('paymentType').value;
+            const address = document.getElementById('customerAddress').value.trim();
 
-            const cashGiven = parseFloat(document.getElementById('cashAmount').value) || 0;
-            const change = cashGiven - total;
-
-            const changeDisplay = document.getElementById('changeDisplay');
-            if (change >= 0) {
-                changeDisplay.innerText = `Vuelto: $${change.toLocaleString('es-AR')}`;
-                changeDisplay.className = "text-[11px] font-semibold text-green-400 whitespace-nowrap";
-            } else {
-                changeDisplay.innerText = "Monto insuficiente";
-                changeDisplay.className = "text-[11px] font-semibold text-red-400 whitespace-nowrap";
-            }
-        }
-
-        function copyAlias() {
-            const alias = "CASCARA.COLORADA.MP";
-            const tempInput = document.createElement('input');
-            tempInput.value = alias;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            showToast("Alias copiado");
-        }
-
-        function handleCheckoutSubmit(e) {
-            e.preventDefault();
-
-            const name = document.getElementById('custName').value.trim();
-            const phone = document.getElementById('custPhone').value.trim();
-            const deliveryType = document.getElementById('deliveryType').value;
-            const address = deliveryType === 'delivery' ? document.getElementById('custAddress').value.trim() : 'Retiro por Local';
-            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
-
-            const subtotal = cart.reduce((sum, item) => sum + (item.unitPrice * item.quantity), 0);
-            const discountAmount = (subtotal * appliedDiscount) / 100;
-            const shippingCost = deliveryType === 'delivery' ? 800 : 0;
-            const total = subtotal - discountAmount + shippingCost;
-
-            let message = `🛒 *NUEVO PEDIDO - MINIMARKET CÁSCARA COLORADA* 🧺\n`;
-            message += `-----------------------------------\n`;
-            message += `👤 *Cliente:* ${name}\n`;
-            message += `📞 *Teléfono:* ${phone}\n`;
-            message += `📍 *Modalidad:* ${deliveryType === 'delivery' ? 'Envío a Domicilio' : 'Retiro por Local'}\n`;
-            if (deliveryType === 'delivery') {
-                message += `🏠 *Dirección:* ${address}\n`;
-            }
-            message += `💳 *Pago:* ${paymentMethod}\n`;
-
-            message += `-----------------------------------\n`;
-            message += `🛍️ *PRODUCTOS:*\n\n`;
-
-            cart.forEach((item, i) => {
-                message += `${i + 1}. *${item.name}* (x${item.quantity})\n`;
-                if (item.extras.length > 0) {
-                    message += `   • Extras: ${item.extras.map(e => e.name).join(', ')}\n`;
-                }
-                if (item.notes) {
-                    message += `   • Detalle: ${item.notes}\n`;
-                }
-                message += `   • Subtotal: $${(item.unitPrice * item.quantity).toLocaleString('es-AR')}\n\n`;
+            let msg = `🛒 *NUEVO PEDIDO - MINIMARKET CASCARA COLORADA*\n\n`;
+            window.cart.forEach(item => {
+                msg += `• ${item.qty}x ${item.title} - $${(item.price * item.qty).toLocaleString()}\n`;
             });
 
-            message += `-----------------------------------\n`;
-            if (appliedDiscount > 0) {
-                message += `🏷️ *Descuento:* -$${discountAmount.toLocaleString('es-AR')}\n`;
+            const total = window.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            msg += `\n💰 *Total Estimado:* $${total.toLocaleString()}\n`;
+            msg += `🛵 *Entrega:* ${delivery === 'delivery' ? 'Delivery a domicilio' : 'Retiro por local'}\n`;
+            msg += `💳 *Pago:* ${payment === 'efectivo' ? 'Efectivo' : 'Transferencia/QR'}\n`;
+            if (address) msg += `📍 *Nota/Dirección:* ${address}\n`;
+
+            const url = `https://wa.me/${window.whatsappPhone}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        };
+
+        // Admin Modal Logic
+        window.openAdminModal = function() {
+            document.getElementById('adminModal').classList.remove('hidden');
+            window.renderAdminProductList();
+        };
+
+        window.closeAdminModal = function() {
+            document.getElementById('adminModal').classList.add('hidden');
+        };
+
+        window.switchAdminTab = function(tabName) {
+            ['whatsapp', 'newProduct', 'manageProducts', 'emojis'].forEach(tab => {
+                document.getElementById(`tabContent-${tab}`).classList.add('hidden');
+                document.getElementById(`tabBtn-${tab}`).className = "flex-1 py-2.5 text-xs font-bold text-gray-400 hover:text-white border-b-2 border-transparent";
+            });
+            document.getElementById(`tabContent-${tabName}`).classList.remove('hidden');
+            document.getElementById(`tabBtn-${tabName}`).className = "flex-1 py-2.5 text-xs font-bold text-cascara-500 border-b-2 border-cascara-500";
+        };
+
+        window.saveWhatsAppNumber = function() {
+            const input = document.getElementById('adminPhoneInput').value.trim();
+            if (input) {
+                window.whatsappPhone = input;
+                localStorage.setItem('cascara_wa_phone', input);
+                window.showToast("Número de WhatsApp guardado");
             }
-            message += `🛵 *Envío:* $${shippingCost.toLocaleString('es-AR')}\n`;
-            message += `💰 *TOTAL:* *$${total.toLocaleString('es-AR')}*\n`;
-            message += `-----------------------------------\n`;
-            message += `¡Gracias por tu compra! 🍅`;
+        };
 
-            const targetPhone = WHATSAPP_NUMBER || "5492610000000";
-            const encodedUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
-            
-            window.open(encodedUrl, '_blank');
-            closeCheckoutModal();
-            showToast("¡Pedido enviado por WhatsApp!");
-        }
+        window.createNewProduct = function() {
+            const title = document.getElementById('newProdTitle').value.trim();
+            const category = document.getElementById('newProdCategory').value;
+            const price = parseFloat(document.getElementById('newProdPrice').value);
+            const desc = document.getElementById('newProdDesc').value.trim();
+            const badge = document.getElementById('newProdBadge').value.trim();
+            const image = document.getElementById('newProdImage').value.trim();
 
-        function showToast(msg, type = "success") {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toastMsg');
-            const toastIcon = document.getElementById('toastIcon');
-
-            toastMsg.innerText = msg;
-            
-            if (type === "error") {
-                toastIcon.className = "fa-solid fa-circle-xmark text-red-400 text-base";
-            } else if (type === "info") {
-                toastIcon.className = "fa-solid fa-circle-info text-blue-400 text-base";
-            } else {
-                toastIcon.className = "fa-solid fa-circle-check text-green-400 text-base";
+            if (!title || isNaN(price)) {
+                return alert("Por favor ingresa nombre y precio válidos.");
             }
 
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 2500);
-        }
+            const newProd = {
+                id: 'prod-' + Date.now(),
+                title,
+                category,
+                price,
+                desc,
+                badge,
+                image: image || window.FALLBACK_IMAGE
+            };
 
-        function openPromoInfo() {
-            alert("🎟️ CUPONES DISPONIBLES:\n\n• 'CASCARA10' (10% OFF)\n• 'VECINO20' (20% OFF)");
-        }
+            window.allProducts.unshift(newProd);
+            if (typeof window.dbSaveProduct === 'function') {
+                window.dbSaveProduct(newProd);
+            }
+            localStorage.setItem('cascara_products_v2', JSON.stringify(window.allProducts));
+            window.renderProducts();
+            window.renderAdminProductList();
+            window.showToast("Producto agregado");
+
+            document.getElementById('newProdTitle').value = '';
+            document.getElementById('newProdPrice').value = '';
+            document.getElementById('newProdDesc').value = '';
+        };
+
+        window.renderAdminProductList = function() {
+            const list = document.getElementById('adminProductList');
+            if (!list) return;
+            list.innerHTML = window.allProducts.map(p => `
+                <div class="flex items-center justify-between p-2.5 bg-black/40 rounded-xl border border-store-borderLight text-xs">
+                    <span class="font-bold text-white truncate max-w-[200px]">${p.title}</span>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-amber-400 font-bold">$${p.price}</span>
+                        <button onclick="deleteProduct('${p.id}')" class="text-red-400 hover:text-red-300 p-1">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        };
+
+        window.deleteProduct = function(id) {
+            window.allProducts = window.allProducts.filter(p => p.id !== id);
+            if (typeof window.dbDeleteProduct === 'function') {
+                window.dbDeleteProduct(id);
+            }
+            localStorage.setItem('cascara_products_v2', JSON.stringify(window.allProducts));
+            window.renderProducts();
+            window.renderAdminProductList();
+            window.showToast("Producto eliminado");
+        };
+
+        window.copyEmoji = function(char) {
+            const el = document.createElement('textarea');
+            el.value = char;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            window.showToast(`Emoji copiado: ${char}`);
+        };
+
+        window.openPromoInfo = function() {
+            alert("✨ PROMO DÍA DE HOY: 10% OFF pagando en efectivo en Verdulería y Fiambrería.");
+        };
+
+        window.showToast = function(msg) {
+            const toast = document.getElementById('toastNotification');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 2500);
+        };
+
+        // Canvas Effect
+        window.createBackgroundEffects = function() {
+            const canvas = document.getElementById('bgCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            const dots = Array.from({ length: 30 }, () => ({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 2 + 1,
+                dx: (Math.random() - 0.5) * 0.5,
+                dy: (Math.random() - 0.5) * 0.5
+            }));
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'rgba(225, 29, 72, 0.3)';
+                dots.forEach(d => {
+                    d.x += d.dx;
+                    d.y += d.dy;
+                    if (d.x < 0 || d.x > canvas.width) d.dx *= -1;
+                    if (d.y < 0 || d.y > canvas.height) d.dy *= -1;
+                    ctx.beginPath();
+                    ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        };
     </script>
 </body>
 </html>
