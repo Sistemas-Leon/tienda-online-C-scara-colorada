@@ -106,6 +106,145 @@
             scrollbar-width: none;
         }
     </style>
+
+    <!-- Global Default Data -->
+    <script>
+        window.FALLBACK_IMAGE = "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=800&auto=format&fit=crop";
+
+        window.DEFAULT_PRODUCTS = [
+            {
+                id: "v1",
+                name: "Tomate Redondo Seleccionado (1 kg)",
+                category: "verduleria",
+                price: 2400,
+                desc: "Tomates rojos y firmes de primera calidad, ideales para ensaladas o salsas caseras.",
+                image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?q=80&w=800&auto=format&fit=crop",
+                badge: "Oferta",
+                extras: [{ name: "Empaque para regalo/picada", price: 200 }]
+            },
+            {
+                id: "v2",
+                name: "Palta Hass Especial (1 kg)",
+                category: "verduleria",
+                price: 5200,
+                desc: "Paltas cremosas en su punto justo de maduración para guacamole o tostadas.",
+                image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?q=80&w=800&auto=format&fit=crop",
+                badge: "Destacado",
+                extras: [{ name: "Selección listas para hoy", price: 0 }]
+            },
+            {
+                id: "f1",
+                name: "Tabla de Picada 'Cáscara Colorada' (Para 3-4)",
+                category: "fiambreria",
+                price: 11500,
+                desc: "Jamón crudo, lomito horneado, queso gouda, salame de colonia, aceitunas verdes y negras.",
+                image: "https://images.unsplash.com/photo-1541529086526-db283c563270?q=80&w=800&auto=format&fit=crop",
+                badge: "Súper Recomendado",
+                extras: [{ name: "Porción extra de Queso Mar del Plata", price: 1800 }]
+            },
+            {
+                id: "p1",
+                name: "Pan Francés / Casero del Día (1 kg)",
+                category: "panaderia",
+                price: 1900,
+                desc: "Crujiente por fuera y esponjoso por dentro, recién horneado por la mañana.",
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop",
+                badge: "Fresco",
+                extras: []
+            },
+            {
+                id: "a1",
+                name: "Aceite de Oliva Extra Virgen (500ml)",
+                category: "almacen",
+                price: 6900,
+                desc: "Prensado en frío, sabor suave y equilibrado para aderezar tus comidas.",
+                image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=800&auto=format&fit=crop",
+                extras: []
+            },
+            {
+                id: "b1",
+                name: "Vino Tinto Malbec Reserva (750ml)",
+                category: "bebidas",
+                price: 5800,
+                desc: "Vino regional equilibrado con notas a frutos rojos y paso por madera.",
+                image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=800&auto=format&fit=crop",
+                badge: "Bodega Local",
+                extras: []
+            }
+        ];
+    </script>
+
+    <!-- Firebase SDK (v11.6.1) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Configuración de Firebase
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'cascara-colorada-store';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "demo-api-key",
+            authDomain: "demo-app.firebaseapp.com",
+            projectId: "demo-app",
+            storageBucket: "demo-app.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:demo"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        window.db = db;
+        window.appId = appId;
+        window.firestoreDoc = doc;
+        window.firestoreSetDoc = setDoc;
+        window.firestoreDeleteDoc = deleteDoc;
+
+        // Autenticación inicial y suscripción a la base de datos en tiempo real
+        async function initCloudDatabase() {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch (err) {
+                console.warn("Error autenticando en Firebase, usando modo offline/local:", err);
+            }
+
+            // Suscripción en tiempo real a la colección pública de productos
+            const productsCollection = collection(db, 'artifacts', appId, 'public', 'data', 'products');
+            
+            onSnapshot(productsCollection, (snapshot) => {
+                if (!snapshot.empty) {
+                    const cloudProducts = [];
+                    snapshot.forEach((docSnap) => {
+                        cloudProducts.push({ id: docSnap.id, ...docSnap.data() });
+                    });
+                    window.PRODUCTS = cloudProducts;
+                } else {
+                    // Si la base de datos está vacía, subimos los productos por defecto
+                    seedDefaultProducts();
+                }
+                if (typeof renderProducts === 'function') renderProducts();
+                if (typeof renderAdminCatalogList === 'function') renderAdminCatalogList();
+            }, (error) => {
+                console.error("Error al escuchar cambios en Firestore:", error);
+            });
+        }
+
+        async function seedDefaultProducts() {
+            if (!auth.currentUser) return;
+            const defaults = window.DEFAULT_PRODUCTS || [];
+            for (const p of defaults) {
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'products', p.id);
+                await setDoc(docRef, p);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', initCloudDatabase);
+    </script>
 </head>
 <body class="min-h-screen flex flex-col justify-between relative selection:bg-cascara-500 selection:text-white pb-20 sm:pb-0">
 
@@ -610,72 +749,14 @@
            LÓGICA JAVASCRIPT CON SOPORTE MOBILE-FIRST
            ========================================================================== */
 
-        const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=800&auto=format&fit=crop";
-
-        const DEFAULT_PRODUCTS = [
-            {
-                id: "v1",
-                name: "Tomate Redondo Seleccionado (1 kg)",
-                category: "verduleria",
-                price: 2400,
-                desc: "Tomates rojos y firmes de primera calidad, ideales para ensaladas o salsas caseras.",
-                image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?q=80&w=800&auto=format&fit=crop",
-                badge: "Oferta",
-                extras: [{ name: "Empaque para regalo/picada", price: 200 }]
-            },
-            {
-                id: "v2",
-                name: "Palta Hass Especial (1 kg)",
-                category: "verduleria",
-                price: 5200,
-                desc: "Paltas cremosas en su punto justo de maduración para guacamole o tostadas.",
-                image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?q=80&w=800&auto=format&fit=crop",
-                badge: "Destacado",
-                extras: [{ name: "Selección listas para hoy", price: 0 }]
-            },
-            {
-                id: "f1",
-                name: "Tabla de Picada 'Cáscara Colorada' (Para 3-4)",
-                category: "fiambreria",
-                price: 11500,
-                desc: "Jamón crudo, lomito horneado, queso gouda, salame de colonia, aceitunas verdes y negras.",
-                image: "https://images.unsplash.com/photo-1541529086526-db283c563270?q=80&w=800&auto=format&fit=crop",
-                badge: "Súper Recomendado",
-                extras: [{ name: "Porción extra de Queso Mar del Plata", price: 1800 }]
-            },
-            {
-                id: "p1",
-                name: "Pan Francés / Casero del Día (1 kg)",
-                category: "panaderia",
-                price: 1900,
-                desc: "Crujiente por fuera y esponjoso por dentro, recién horneado por la mañana.",
-                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop",
-                badge: "Fresco",
-                extras: []
-            },
-            {
-                id: "a1",
-                name: "Aceite de Oliva Extra Virgen (500ml)",
-                category: "almacen",
-                price: 6900,
-                desc: "Prensado en frío, sabor suave y equilibrado para aderezar tus comidas.",
-                image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=800&auto=format&fit=crop",
-                extras: []
-            },
-            {
-                id: "b1",
-                name: "Vino Tinto Malbec Reserva (750ml)",
-                category: "bebidas",
-                price: 5800,
-                desc: "Vino regional equilibrado con notas a frutos rojos y paso por madera.",
-                image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=800&auto=format&fit=crop",
-                badge: "Bodega Local",
-                extras: []
-            }
-        ];
+        const FALLBACK_IMAGE = window.FALLBACK_IMAGE;
+        const DEFAULT_PRODUCTS = window.DEFAULT_PRODUCTS;
 
         let PRODUCTS = JSON.parse(localStorage.getItem('cascara_products')) || DEFAULT_PRODUCTS;
         let WHATSAPP_NUMBER = localStorage.getItem('cascara_wa_number') || "5492610000000";
+
+        // Hacer PRODUCTS global para la sincronización con Firebase
+        window.PRODUCTS = PRODUCTS;
 
         const CATEGORIES = [
             { id: "todas", name: "Todas", icon: "fa-border-all" },
@@ -707,8 +788,30 @@
             updateCartUI();
         }
 
-        function saveProductsToStorage() {
-            localStorage.setItem('cascara_products', JSON.stringify(PRODUCTS));
+        async function saveProductsToStorage() {
+            localStorage.setItem('cascara_products', JSON.stringify(window.PRODUCTS));
+        }
+
+        async function saveProductToCloud(product) {
+            if (window.db && window.appId) {
+                try {
+                    const docRef = window.firestoreDoc(window.db, 'artifacts', window.appId, 'public', 'data', 'products', product.id);
+                    await window.firestoreSetDoc(docRef, product);
+                } catch (e) {
+                    console.error("Error al guardar producto en la nube:", e);
+                }
+            }
+        }
+
+        async function deleteProductFromCloud(productId) {
+            if (window.db && window.appId) {
+                try {
+                    const docRef = window.firestoreDoc(window.db, 'artifacts', window.appId, 'public', 'data', 'products', productId);
+                    await window.firestoreDeleteDoc(docRef);
+                } catch (e) {
+                    console.error("Error al eliminar producto de la nube:", e);
+                }
+            }
         }
 
         function createBackgroundEffects() {
@@ -773,7 +876,9 @@
             const counter = document.getElementById('productCounter');
             if (!grid) return;
 
-            let filtered = PRODUCTS.filter(p => {
+            const productList = window.PRODUCTS || PRODUCTS;
+
+            let filtered = productList.filter(p => {
                 const matchCategory = currentCategory === 'todas' || p.category === currentCategory;
                 const matchSearch = p.name.toLowerCase().includes(searchQuery) || p.desc.toLowerCase().includes(searchQuery);
                 return matchCategory && matchSearch;
@@ -829,7 +934,7 @@
 
         function openAdminModal() {
             document.getElementById('adminWhatsappInput').value = WHATSAPP_NUMBER;
-            document.getElementById('adminCatalogCount').innerText = PRODUCTS.length;
+            document.getElementById('adminCatalogCount').innerText = (window.PRODUCTS || PRODUCTS).length;
             renderAdminCatalogList();
             document.getElementById('adminModal').classList.remove('hidden');
         }
@@ -867,13 +972,14 @@
 
         function saveWhatsappConfig() {
             const inputVal = document.getElementById('adminWhatsappInput').value.trim();
-            if (!inputVal) return;
-            WHATSAPP_NUMBER = inputVal;
-            localStorage.setItem('cascara_wa_number', WHATSAPP_NUMBER);
-            showToast("Número de WhatsApp guardado");
+            if (inputVal) {
+                WHATSAPP_NUMBER = inputVal;
+                localStorage.setItem('cascara_wa_number', WHATSAPP_NUMBER);
+                showToast("Número de WhatsApp guardado");
+            }
         }
 
-        function handleAddNewProduct(e) {
+        async function handleAddNewProduct(e) {
             e.preventDefault();
             const newProd = {
                 id: "prod_" + Date.now(),
@@ -886,30 +992,35 @@
                 extras: []
             };
 
-            PRODUCTS.unshift(newProd);
+            window.PRODUCTS.unshift(newProd);
             saveProductsToStorage();
+            await saveProductToCloud(newProd);
+
             renderProducts();
             document.getElementById('newProductForm').reset();
-            document.getElementById('adminCatalogCount').innerText = PRODUCTS.length;
+            document.getElementById('adminCatalogCount').innerText = window.PRODUCTS.length;
             renderAdminCatalogList();
-            showToast("Producto agregado");
+            showToast("Producto guardado y sincronizado en la nube");
             switchAdminTab('list');
         }
 
-        function deleteProduct(productId) {
+        async function deleteProduct(productId) {
             if (confirm("¿Eliminar este producto?")) {
-                PRODUCTS = PRODUCTS.filter(p => p.id !== productId);
+                window.PRODUCTS = window.PRODUCTS.filter(p => p.id !== productId);
                 saveProductsToStorage();
+                await deleteProductFromCloud(productId);
+
                 renderProducts();
                 renderAdminCatalogList();
-                document.getElementById('adminCatalogCount').innerText = PRODUCTS.length;
-                showToast("Producto eliminado", "info");
+                document.getElementById('adminCatalogCount').innerText = window.PRODUCTS.length;
+                showToast("Producto eliminado de todos los dispositivos", "info");
             }
         }
 
         function renderAdminCatalogList() {
             const container = document.getElementById('adminTabList');
-            container.innerHTML = PRODUCTS.map(p => `
+            const productList = window.PRODUCTS || PRODUCTS;
+            container.innerHTML = productList.map(p => `
                 <div class="p-2.5 bg-store-card/80 border border-store-borderLight rounded-xl flex items-center justify-between space-x-2">
                     <div class="flex items-center space-x-2.5">
                         <img src="${p.image}" onerror="handleImageError(this)" class="w-10 h-10 rounded-lg object-cover">
@@ -930,7 +1041,8 @@
            ========================================================================== */
 
         function openCustomizeModal(productId) {
-            const product = PRODUCTS.find(p => p.id === productId);
+            const productList = window.PRODUCTS || PRODUCTS;
+            const product = productList.find(p => p.id === productId);
             if (!product) return;
 
             selectedProductForCustomization = product;
